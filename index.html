@@ -15,38 +15,32 @@
       <h1>Post Builder</h1>
       <p class="intro">La cabina editoriale per i post BAAL.</p>
     </header>
-
     <section class="panel">
       <label for="description">Descrivi il contenuto</label>
-      <textarea id="description" rows="4" placeholder="Scrivi qui in italiano cosa mostra il contenuto..."></textarea>
-
+      <textarea id="description" rows="4" placeholder="Descrivi in italiano il contenuto, il contesto e il punto che vuoi comunicare..."></textarea>
       <div class="grid">
-        <div>
-          <label for="pillar">Pilastro</label>
-          <select id="pillar"></select>
-        </div>
-        <div>
-          <label for="format">Formato</label>
-          <select id="format">
-            <option value="">Da definire</option>
-            <option>Photo</option><option>Photo Collection</option>
-            <option>Video Clip</option><option>GIF</option>
-            <option>Quote Post</option><option>Poll</option>
-          </select>
-        </div>
+        <div><label for="pillar">Pilastro</label><select id="pillar"><option value="">Caricamento...</option></select></div>
+        <div><label for="subcategory">Sottocategoria</label><select id="subcategory" disabled><option value="">Prima scegli il pilastro</option></select></div>
       </div>
-
-      <label for="subject">Protagonista</label>
-      <input id="subject" type="text" placeholder="Nome della protagonista o creator">
-
-      <label for="hashtags">Hashtag (facoltativi)</label>
+      <div class="grid">
+        <div><label for="genre">Genere / sottogenere</label><select id="genre" disabled><option value="">Prima scegli la sottocategoria</option></select></div>
+        <div><label for="format">Formato</label><select id="format"><option value="">Seleziona formato</option></select></div>
+      </div>
+      <div class="grid">
+        <div><label for="subjectCategory">Categoria protagonista (facoltativa)</label><select id="subjectCategory"><option value="">Nessuna selezione</option></select></div>
+        <div><label for="subject">Protagonista (facoltativa)</label><input id="subject" list="subjectOptions" placeholder="Scrivi o seleziona un nome"><datalist id="subjectOptions"></datalist></div>
+      </div>
+      <label for="hashtags">Hashtag selezionati / personalizzati</label>
       <input id="hashtags" type="text" placeholder="#tag1 #tag2">
-
-      <button id="preview">Prepara scheda</button>
-      <p id="status" role="status">Archivi caricati: in attesa.</p>
+      <div id="suggestions" class="suggestions" aria-live="polite"></div>
+      <div class="actions">
+        <button id="prepare">Prepara scheda</button>
+        <button id="copy" class="secondary" disabled>Copia scheda</button>
+      </div>
+      <pre id="output" class="output" hidden></pre>
+      <p id="status" role="status">Caricamento degli archivi BAAL...</p>
     </section>
-
-    <footer>BAAL AFTER DARK · Versione iniziale</footer>
+    <footer>BAAL AFTER DARK · Post Builder · versione archivio 2</footer>
   </main>
   <script src="js/app.js"></script>
 </body>
