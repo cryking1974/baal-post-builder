@@ -1,1 +1,81 @@
-[]
+{
+  "schema_version": "1.0",
+  "source": "BAAL AFTER DARK – Subject Prelist",
+  "purpose": "Archivio facoltativo di protagoniste, performer, creator, VIP, modelle e personaggi utilizzabili nel Post Builder.",
+  "rules": [
+    "L'archivio può restare vuoto: non inserire automaticamente persone reali.",
+    "Aggiungere una persona solo quando nome, categoria e contesto sono stati verificati.",
+    "Per persone reali, verificare che siano adulte prima di associare contenuti adult.",
+    "Non associare a una persona generi, contenuti o hashtag non documentati.",
+    "Gli hashtag associati sono suggerimenti contestuali, non tag obbligatori.",
+    "Registrare la fonte della verifica e aggiornare i record quando le informazioni cambiano."
+  ],
+  "categories": [
+    {
+      "id": "adult-performer",
+      "name": "Pornstar / Adult Performer",
+      "adult_required": true
+    },
+    {
+      "id": "adult-creator",
+      "name": "Adult Creator",
+      "adult_required": true
+    },
+    {
+      "id": "model",
+      "name": "Model / Glamour Model",
+      "adult_required": false
+    },
+    {
+      "id": "celebrity",
+      "name": "Celebrity / VIP",
+      "adult_required": false
+    },
+    {
+      "id": "influencer",
+      "name": "Influencer / Public Figure",
+      "adult_required": false
+    },
+    {
+      "id": "cosplay-creator",
+      "name": "Cosplay Creator",
+      "adult_required": false
+    },
+    {
+      "id": "fictional-character",
+      "name": "Fictional Character",
+      "adult_required": false
+    }
+  ],
+  "verification_statuses": [
+    {
+      "id": "unverified",
+      "label": "Non verificato"
+    },
+    {
+      "id": "partially-verified",
+      "label": "Verifica parziale"
+    },
+    {
+      "id": "verified",
+      "label": "Verificato"
+    },
+    {
+      "id": "needs-review",
+      "label": "Da ricontrollare"
+    }
+  ],
+  "fields": [
+    "id",
+    "stage_name_or_name",
+    "aliases",
+    "category",
+    "adult_status_verified",
+    "genres",
+    "associated_hashtags",
+    "source",
+    "verification_status",
+    "notes"
+  ],
+  "subjects": []
+}
