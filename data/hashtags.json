@@ -1,1 +1,518 @@
-[]
+{
+  "schema_version": "1.0",
+  "source": "BAAL AFTER DARK – Dizionario Slang X v1.0",
+  "source_policy": "I pacchetti e le definizioni seguenti sono estratti dal Dizionario BAAL. Non rappresentano misure di popolarità o garanzie di copertura.",
+  "status_definitions": {
+    "base_from_dictionary": "Presente nel pacchetto base del Dizionario BAAL; non equivale a popolarità verificata.",
+    "optional_from_dictionary": "Aggiunta opzionale indicata dal Dizionario BAAL.",
+    "test_from_dictionary": "Variante indicata dal Dizionario BAAL come da testare.",
+    "avoid": "Termine che il Dizionario BAAL raccomanda di evitare."
+  },
+  "packages": [
+    {
+      "id": "gooner",
+      "name": "Gooner",
+      "use_when": "Contenuti rivolti alla gooner culture e commenti sulla cultura NSFW.",
+      "base": [
+        "#Gooner",
+        "#GoonerCulture",
+        "#NSFW",
+        "#AdultEntertainment"
+      ],
+      "test": [
+        "#ForGooner",
+        "#Gooning",
+        "#AdultCreator"
+      ],
+      "notes": "Scegliere 3-5 hashtag pertinenti, non tutti insieme."
+    },
+    {
+      "id": "performer",
+      "name": "Pornstar / Adult Performer",
+      "use_when": "Spotlight, commenti editoriali o citazioni su performer adulte.",
+      "base": [
+        "#Pornstar",
+        "#AdultEntertainment",
+        "#AdultStar",
+        "#NSFW"
+      ],
+      "optional": [
+        "#[NomePerformer]",
+        "#AfterDarkSpotlight"
+      ],
+      "notes": "Usare il nome solo se la performer è realmente protagonista."
+    },
+    {
+      "id": "adult-creator",
+      "name": "Adult Creator / OnlyFans",
+      "use_when": "Creator indipendenti e contenuti promozionali autorizzati.",
+      "base": [
+        "#AdultCreator",
+        "#ContentCreator",
+        "#AdultEntertainment",
+        "#NSFW"
+      ],
+      "optional": [
+        "#OnlyFans",
+        "#[NomeCreator]"
+      ],
+      "notes": "#OnlyFans solo se pertinente."
+    },
+    {
+      "id": "cosplay",
+      "name": "Cosplay / Fetish Cosplay",
+      "use_when": "Cosplay, personaggi, costumi, latex e trasformazioni.",
+      "base": [
+        "#Cosplay",
+        "#CosplayCreator",
+        "#Latex",
+        "#NSFW"
+      ],
+      "optional": [
+        "#GothicCosplay",
+        "#FantasyCosplay",
+        "#AdultCreator"
+      ],
+      "notes": "Non usare tag sessuali su cosplay non sessuale."
+    },
+    {
+      "id": "foot-fetish",
+      "name": "Foot Fetish",
+      "use_when": "Contenuti che hanno davvero i piedi come soggetto principale.",
+      "base": [
+        "#[NomePerformer]",
+        "#FootFetish",
+        "#Feet",
+        "#NSFW",
+        "#Fetish"
+      ],
+      "optional": [
+        "#FeetFirst",
+        "#Gooner"
+      ],
+      "notes": "#Gooner solo se pertinente."
+    },
+    {
+      "id": "femdom-bdsm",
+      "name": "Femdom / BDSM",
+      "use_when": "Contenuti consensuali di dominazione, sottomissione o cultura BDSM.",
+      "base": [
+        "#Femdom",
+        "#BDSM",
+        "#Domme",
+        "#NSFW"
+      ],
+      "optional": [
+        "#Dominance",
+        "#Submission",
+        "#Kink"
+      ]
+    },
+    {
+      "id": "glamour",
+      "name": "Glamour / Thirst Trap",
+      "use_when": "Foto glamour, moda, pose seducenti e contenuti ammiccanti non espliciti.",
+      "base": [
+        "#[NomePerformer]",
+        "#Glamour",
+        "#ThirstTrap",
+        "#Model",
+        "#AfterDark"
+      ],
+      "optional": [
+        "#Baddie",
+        "#AltGirl",
+        "#Cosplay"
+      ]
+    },
+    {
+      "id": "celebrity",
+      "name": "Celebrity / Pop Culture",
+      "use_when": "Celebrità, gossip, cultura pop e commenti non principalmente adult.",
+      "base": [
+        "#PopCulture",
+        "#Celebrity",
+        "#Entertainment"
+      ],
+      "optional": [
+        "#[NomeCelebrità]",
+        "#BAALsVerdict"
+      ]
+    },
+    {
+      "id": "edit",
+      "name": "Edit / Video Montage",
+      "use_when": "Montaggi originali o autorizzati, transizioni e video-edit.",
+      "base": [
+        "#Edit",
+        "#VideoEdit",
+        "#AfterDark",
+        "#AdultEntertainment"
+      ],
+      "optional": [
+        "#[NomePerformer]",
+        "#CosplayEdit",
+        "#NSFW"
+      ],
+      "notes": "#NSFW solo se appropriato. Un edit non elimina copyright, diritti d'immagine o necessità di autorizzazione alla redistribuzione."
+    },
+    {
+      "id": "poll",
+      "name": "Sondaggio",
+      "use_when": "Scelta tra performer, temi o rubriche.",
+      "base": [
+        "#TheDevilsPoll",
+        "#BAAL",
+        "#AdultEntertainment"
+      ],
+      "optional": [
+        "#[NomiRilevanti]",
+        "#Gooner"
+      ],
+      "notes": "#Gooner solo se pertinente."
+    }
+  ],
+  "slang_terms": [
+    {
+      "id": "gooner",
+      "term": "GOONER",
+      "definition": "Persona che si identifica con la gooner culture; spesso associata a sessioni prolungate di eccitazione e consumo di pornografia.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "gooning",
+      "term": "GOONING",
+      "definition": "Prolungamento dell'eccitazione sessuale, spesso attraverso stimolazione e contenuti pornografici.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "gooner-culture",
+      "term": "GOONER CULTURE",
+      "definition": "Sottocultura online legata al gooning, alla pornografia e a meme o linguaggi condivisi.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "goonette",
+      "term": "GOONETTE",
+      "definition": "Termine informale per una donna che partecipa o si identifica con la gooner culture.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "coomer",
+      "term": "COOMER",
+      "definition": "Meme o insulto internet per una persona percepita come eccessivamente concentrata sulla pornografia o sulla masturbazione.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "edging",
+      "term": "EDGING",
+      "definition": "Tecnica di avvicinarsi all'orgasmo e interrompere o ridurre la stimolazione per ritardarlo.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "joi",
+      "term": "JOI",
+      "definition": "Jerk Off Instructions; contenuto che fornisce istruzioni per la masturbazione.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "tribute",
+      "term": "TRIBUTE",
+      "definition": "Contenuto creato in omaggio a una persona o performer; verificare sempre diritti e consenso.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "wankbattle",
+      "term": "WANKBATTLE",
+      "definition": "Sfida o competizione a tema masturbazione, spesso presentata come gioco o provocazione online.",
+      "category": "gooner-culture"
+    },
+    {
+      "id": "thirst-trap",
+      "term": "THIRST TRAP",
+      "definition": "Foto o video pubblicato per attirare attenzione e interesse, spesso con una posa seducente.",
+      "category": "glamour"
+    },
+    {
+      "id": "oomf",
+      "term": "OOMF",
+      "definition": "One Of My Followers; uno dei miei follower, spesso senza nominarlo.",
+      "category": "x-slang"
+    },
+    {
+      "id": "adult-entertainment",
+      "term": "ADULT ENTERTAINMENT",
+      "definition": "Settore dell'intrattenimento per adulti.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "adult-creator",
+      "term": "ADULT CREATOR",
+      "definition": "Creator che produce contenuti destinati a un pubblico adulto.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "pornstar",
+      "term": "PORNSTAR",
+      "definition": "Performer che lavora nel cinema o nell'intrattenimento pornografico.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "adult-star",
+      "term": "ADULT STAR",
+      "definition": "Espressione più ampia per una figura nota nell'intrattenimento per adulti.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "of",
+      "term": "OF",
+      "definition": "Abbreviazione informale di OnlyFans.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "ppv",
+      "term": "PPV",
+      "definition": "Pay Per View; contenuto accessibile dietro pagamento.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "collab",
+      "term": "COLLAB",
+      "definition": "Collaborazione tra creator, performer o account.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "bts",
+      "term": "BTS",
+      "definition": "Behind The Scenes; dietro le quinte di una produzione.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "solo",
+      "term": "SOLO",
+      "definition": "Contenuto realizzato da una sola performer.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "pov",
+      "term": "POV",
+      "definition": "Point Of View; contenuto costruito dal punto di vista dello spettatore.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "softcore",
+      "term": "SOFTCORE",
+      "definition": "Erotismo non esplicito, senza rappresentazione grafica di atti sessuali.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "milf",
+      "term": "MILF",
+      "definition": "Acronimo popolare e sessualizzato riferito a una madre o donna adulta considerata attraente; può risultare volgare o riduttivo.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "bbw",
+      "term": "BBW",
+      "definition": "Big Beautiful Woman; espressione usata per una donna formosa; uso e preferenza variano.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "pawg",
+      "term": "PAWG",
+      "definition": "Acronimo volgare e sessualizzante; usare solo se il contesto lo rende strettamente pertinente.",
+      "category": "adult-entertainment"
+    },
+    {
+      "id": "baddie",
+      "term": "BADDIE",
+      "definition": "Slang per una donna dall'aspetto molto curato, sicuro o appariscente.",
+      "category": "glamour"
+    },
+    {
+      "id": "alt-girl",
+      "term": "ALT GIRL",
+      "definition": "Donna con estetica alternativa, per esempio goth, punk o emo.",
+      "category": "glamour"
+    },
+    {
+      "id": "thot",
+      "term": "THOT",
+      "definition": "Insulto sessista usato online per denigrare una donna ritenuta promiscua; da evitare nella comunicazione editoriale.",
+      "category": "avoid"
+    },
+    {
+      "id": "fetish",
+      "term": "FETISH",
+      "definition": "Interesse sessuale intenso o eccitazione associata a un oggetto, una parte del corpo o una pratica.",
+      "category": "fetish"
+    },
+    {
+      "id": "foot-fetish",
+      "term": "FOOT FETISH",
+      "definition": "Feticismo dei piedi.",
+      "category": "fetish"
+    },
+    {
+      "id": "femdom",
+      "term": "FEMDOM",
+      "definition": "Female domination; dominazione femminile in una dinamica consensuale.",
+      "category": "fetish"
+    },
+    {
+      "id": "domme",
+      "term": "DOMME",
+      "definition": "Donna che assume il ruolo dominante in una dinamica BDSM.",
+      "category": "fetish"
+    },
+    {
+      "id": "sub",
+      "term": "SUB",
+      "definition": "Abbreviazione di submissive; persona che assume il ruolo sottomesso.",
+      "category": "fetish"
+    },
+    {
+      "id": "bdsm",
+      "term": "BDSM",
+      "definition": "Bondage & Discipline, Dominance & Submission, Sadism & Masochism.",
+      "category": "fetish"
+    },
+    {
+      "id": "findom",
+      "term": "FINDOM",
+      "definition": "Financial domination; dinamica consensuale in cui il controllo o il trasferimento di denaro fanno parte del gioco di potere.",
+      "category": "fetish"
+    },
+    {
+      "id": "latex",
+      "term": "LATEX",
+      "definition": "Materiale e, per estensione, estetica fetish basata su indumenti in lattice.",
+      "category": "fetish"
+    },
+    {
+      "id": "pegging",
+      "term": "PEGGING",
+      "definition": "Pratica sessuale con strap-on; termine da usare solo se pertinente al contenuto adulto consensuale.",
+      "category": "fetish"
+    },
+    {
+      "id": "kink",
+      "term": "KINK",
+      "definition": "Preferenza o pratica sessuale non convenzionale; significato dipendente dal contesto.",
+      "category": "fetish"
+    },
+    {
+      "id": "cei",
+      "term": "CEI",
+      "definition": "Cum Eating Instructions; categoria di contenuti pornografici espliciti.",
+      "category": "fetish"
+    }
+  ],
+  "platform_terms": [
+    {
+      "term": "POST",
+      "definition": "Pubblicazione su X."
+    },
+    {
+      "term": "QT / QUOTE POST",
+      "definition": "Post che cita un contenuto altrui aggiungendo un proprio commento."
+    },
+    {
+      "term": "RT / REPOST",
+      "definition": "Ricondivisione di un post senza aggiungere un commento."
+    },
+    {
+      "term": "REPLY",
+      "definition": "Risposta a un post."
+    },
+    {
+      "term": "THREAD",
+      "definition": "Serie di post collegati."
+    },
+    {
+      "term": "MUTUALS",
+      "definition": "Account che si seguono reciprocamente."
+    },
+    {
+      "term": "ENGAGEMENT",
+      "definition": "Interazioni: like, risposte, repost, clic e altre azioni misurabili."
+    },
+    {
+      "term": "ENGAGEMENT BAIT",
+      "definition": "Contenuto costruito soprattutto per spingere le persone a interagire."
+    },
+    {
+      "term": "RATIO",
+      "definition": "Risposte numerose rispetto ai like, spesso come segnale di contestazione."
+    },
+    {
+      "term": "SHADOWBAN",
+      "definition": "Termine colloquiale per una presunta limitazione della visibilità; non è una diagnosi ufficiale di X."
+    },
+    {
+      "term": "FYP / FOR YOU",
+      "definition": "Riferimento alla sezione For You o a formule popolari su altre piattaforme; non garantisce distribuzione su X."
+    },
+    {
+      "term": "NSFW",
+      "definition": "Not Safe For Work; contenuto non adatto a un ambiente professionale o pubblico."
+    },
+    {
+      "term": "SFW",
+      "definition": "Safe For Work; contenuto generalmente adatto a un contesto pubblico o professionale."
+    },
+    {
+      "term": "CW / TW",
+      "definition": "Content Warning / Trigger Warning."
+    },
+    {
+      "term": "ALT TEXT",
+      "definition": "Testo alternativo che descrive un'immagine per accessibilità."
+    }
+  ],
+  "separate_topics": {
+    "drug_twt": {
+      "included_for_recognition": true,
+      "publishing_use": "Non usare hashtag legati alle droghe per inseguire visibilità o associare BAAL al consumo o alla vendita di sostanze."
+    }
+  },
+  "editorial_rules": [
+    "Usare normalmente 3-5 hashtag specifici, non venti tag generici.",
+    "Inserire il nome della performer solo se è davvero protagonista.",
+    "Non usare #NSFW come sostituto dell'etichetta contenuti sensibili di X.",
+    "Gli hashtag non rendono lecito un contenuto non autorizzato.",
+    "Non usare #Leaked o tag che suggeriscono materiale intimo non consensuale.",
+    "Non attribuire a una creator contenuti che non ha prodotto o autorizzato.",
+    "Alternare i pacchetti in base al tema.",
+    "Controllare il significato di uno slang ambiguo prima di inserirlo.",
+    "Evitare hashtag non pertinenti solo perché sembrano popolari.",
+    "Valutare impression, engagement, visite al profilo e nuovi follower, non soltanto i like."
+  ],
+  "rubrics": [
+    {
+      "id": "baals-verdict",
+      "name": "BAAL'S VERDICT",
+      "description": "Opinioni e commenti taglienti."
+    },
+    {
+      "id": "after-dark-spotlight",
+      "name": "AFTER DARK SPOTLIGHT",
+      "description": "Performer e creator."
+    },
+    {
+      "id": "feet-first",
+      "name": "FEET FIRST",
+      "description": "Foot fetish culture."
+    },
+    {
+      "id": "the-devils-poll",
+      "name": "THE DEVIL'S POLL",
+      "description": "Sondaggi."
+    },
+    {
+      "id": "celebrity-after-hours",
+      "name": "CELEBRITY AFTER HOURS",
+      "description": "Celebrity e pop culture."
+    }
+  ]
+}
