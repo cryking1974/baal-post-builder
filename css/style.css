@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+:root { color-scheme: dark; --gold: #c9a45c; --bg: #101010; --panel: #1b1b1b; --muted: #aaa; }
+body { margin: 0; background: radial-gradient(ellipse at top, #282117 0, var(--bg) 55%); color: #f4f0e8; font: 16px/1.5 system-ui, sans-serif; }
+.shell { width: min(760px, calc(100% - 32px)); margin: 48px auto; }
+header { text-align: center; margin-bottom: 28px; }
+.mark { color: var(--gold); font: 800 42px/1 Georgia, serif; letter-spacing: .18em; }
+.eyebrow { color: var(--gold); letter-spacing: .35em; font-size: 11px; margin: 8px 0 22px; }
+h1 { margin: 0; font-size: 30px; }
+.intro, footer, #status { color: var(--muted); }
+.panel { background: var(--panel); border: 1px solid #51432a; border-radius: 14px; padding: 24px; box-shadow: 0 16px 50px #0008; }
+label { display: block; color: var(--gold); font-size: 13px; margin: 16px 0 7px; }
+textarea, input, select { width: 100%; background: #101010; border: 1px solid #49423a; border-radius: 8px; padding: 12px; color: #fff; font: inherit; }
+textarea { resize: vertical; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+button { margin-top: 22px; background: var(--gold); color: #17130d; border: 0; border-radius: 8px; padding: 12px 18px; font-weight: 750; cursor: pointer; }
+button:hover { filter: brightness(1.1); }
+#status { font-size: 13px; min-height: 1.5em; }
+footer { text-align: center; font-size: 12px; margin: 24px; }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; gap: 0; } .panel { padding: 18px; } }

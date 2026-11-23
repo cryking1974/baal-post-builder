@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>BAAL AFTER DARK – Post Builder</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="mark">BAAL</div>
+      <p class="eyebrow">AFTER DARK</p>
+      <h1>Post Builder</h1>
+      <p class="intro">La cabina editoriale per i post BAAL.</p>
+    </header>
+
+    <section class="panel">
+      <label for="description">Descrivi il contenuto</label>
+      <textarea id="description" rows="4" placeholder="Scrivi qui in italiano cosa mostra il contenuto..."></textarea>
+
+      <div class="grid">
+        <div>
+          <label for="pillar">Pilastro</label>
+          <select id="pillar"></select>
+        </div>
+        <div>
+          <label for="format">Formato</label>
+          <select id="format">
+            <option value="">Da definire</option>
+            <option>Photo</option><option>Photo Collection</option>
+            <option>Video Clip</option><option>GIF</option>
+            <option>Quote Post</option><option>Poll</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="subject">Protagonista</label>
+      <input id="subject" type="text" placeholder="Nome della protagonista o creator">
+
+      <label for="hashtags">Hashtag (facoltativi)</label>
+      <input id="hashtags" type="text" placeholder="#tag1 #tag2">
+
+      <button id="preview">Prepara scheda</button>
+      <p id="status" role="status">Archivi caricati: in attesa.</p>
+    </section>
+
+    <footer>BAAL AFTER DARK · Versione iniziale</footer>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
