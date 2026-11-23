@@ -1,28 +1,661 @@
 {
+  "schema_version": "1.0",
+  "project": "BAAL AFTER DARK",
+  "notes": {
+    "source_policy": "Le categorie canoniche derivano dalla BAAL Editorial Bible. Le estensioni sono proposte di catalogazione editoriale e richiedono revisione prima dell'uso operativo.",
+    "safety": "La presenza di una categoria nel catalogo non autorizza la pubblicazione. Verificare sempre maggiore età, consenso, provenienza, diritti e regole della piattaforma.",
+    "status_values": [
+      "canonical",
+      "editorial_expansion",
+      "needs_review"
+    ]
+  },
   "pillars": [
     {
       "id": "porno-explicit",
-      "name": "PORNO EXPLICIT"
+      "name": "PORNO EXPLICIT",
+      "status": "canonical",
+      "description": "Adult entertainment e performer adulte.",
+      "subcategories": [
+        {
+          "id": "performer-spotlight",
+          "name": "Performer Spotlight",
+          "genres": [
+            "performer-profile",
+            "career-highlight",
+            "verified-performer"
+          ]
+        },
+        {
+          "id": "adult-creator",
+          "name": "Adult Creator",
+          "genres": [
+            "independent-creator",
+            "subscription-creator",
+            "verified-amateur-creator"
+          ]
+        },
+        {
+          "id": "studio-production",
+          "name": "Studio Production",
+          "genres": [
+            "studio-produced",
+            "scripted-production",
+            "cinematic-production"
+          ]
+        },
+        {
+          "id": "independent-production",
+          "name": "Independent Production",
+          "genres": [
+            "independent",
+            "creator-produced",
+            "self-produced"
+          ]
+        },
+        {
+          "id": "scene-and-clips",
+          "name": "Scene & Clips",
+          "genres": [
+            "scene-spotlight",
+            "short-clip",
+            "long-scene",
+            "point-of-view-format"
+          ]
+        },
+        {
+          "id": "compilation",
+          "name": "Compilation",
+          "genres": [
+            "themed-compilation",
+            "performer-compilation",
+            "genre-compilation"
+          ]
+        },
+        {
+          "id": "pmv",
+          "name": "PMV",
+          "genres": [
+            "music-video-edit",
+            "themed-music-edit"
+          ]
+        },
+        {
+          "id": "vintage",
+          "name": "Vintage",
+          "genres": [
+            "retro-adult-media",
+            "archival-production"
+          ]
+        },
+        {
+          "id": "amateur-verified",
+          "name": "Amateur / Verified Creator",
+          "genres": [
+            "verified-amateur",
+            "independent-performer"
+          ]
+        },
+        {
+          "id": "interviews-bts",
+          "name": "Interviews & BTS",
+          "genres": [
+            "interview",
+            "authorized-backstage",
+            "production-feature"
+          ]
+        },
+        {
+          "id": "authorized-tribute",
+          "name": "Authorized Tribute",
+          "genres": [
+            "creator-tribute",
+            "performer-tribute",
+            "fan-edit-authorized"
+          ]
+        }
+      ]
     },
     {
       "id": "vip-shoot",
-      "name": "VIP SHOOT"
+      "name": "VIP SHOOT",
+      "status": "canonical",
+      "description": "Osservatorio su figure pubbliche, cinema, televisione, moda, musica e cultura pop.",
+      "subcategories": [
+        {
+          "id": "celebrity-spotlight",
+          "name": "Celebrity Spotlight",
+          "genres": [
+            "actor",
+            "actress",
+            "singer",
+            "presenter",
+            "athlete",
+            "public-figure"
+          ]
+        },
+        {
+          "id": "movie-tv",
+          "name": "Movie & TV",
+          "genres": [
+            "movie-scene",
+            "tv-series-scene",
+            "character-spotlight",
+            "film-promotion",
+            "series-promotion"
+          ]
+        },
+        {
+          "id": "red-carpet",
+          "name": "Red Carpet & Events",
+          "genres": [
+            "premiere",
+            "award-show",
+            "festival",
+            "public-appearance"
+          ]
+        },
+        {
+          "id": "fashion-editorial",
+          "name": "Fashion Editorial",
+          "genres": [
+            "fashion-campaign",
+            "designer-look",
+            "runway",
+            "street-style",
+            "beauty-editorial"
+          ]
+        },
+        {
+          "id": "photoshoot",
+          "name": "Photoshoot",
+          "genres": [
+            "editorial-shoot",
+            "portrait",
+            "magazine-cover",
+            "campaign-shoot"
+          ]
+        },
+        {
+          "id": "music-performance",
+          "name": "Music & Performance",
+          "genres": [
+            "music-video",
+            "concert",
+            "live-performance",
+            "tour",
+            "stage-look"
+          ]
+        },
+        {
+          "id": "cosplay",
+          "name": "Cosplay",
+          "genres": [
+            "character-cosplay",
+            "gaming-cosplay",
+            "anime-cosplay",
+            "fantasy-cosplay",
+            "sci-fi-cosplay"
+          ]
+        },
+        {
+          "id": "pop-culture",
+          "name": "Pop Culture",
+          "genres": [
+            "viral-moment",
+            "throwback",
+            "cultural-reference",
+            "trend-reaction"
+          ]
+        },
+        {
+          "id": "creator-culture",
+          "name": "Creator Culture",
+          "genres": [
+            "public-creator-profile",
+            "creator-collaboration",
+            "social-media-moment"
+          ]
+        },
+        {
+          "id": "interview-public",
+          "name": "Interview & Public Appearance",
+          "genres": [
+            "press-interview",
+            "talk-show",
+            "podcast-appearance",
+            "press-conference"
+          ]
+        }
+      ]
     },
     {
       "id": "extreme-fetish",
-      "name": "EXTREME FETISH"
+      "name": "EXTREME FETISH",
+      "status": "canonical",
+      "description": "Catalogazione delle sottoculture fetish adulte con precisione terminologica.",
+      "subcategories": [
+        {
+          "id": "feet-footwear",
+          "name": "Feet & Footwear",
+          "genres": [
+            "foot-fetish",
+            "feet-worship",
+            "barefoot",
+            "dirty-feet",
+            "heels",
+            "boots",
+            "sandals",
+            "flip-flops",
+            "socks",
+            "stockings",
+            "pedicure",
+            "shoe-focus"
+          ]
+        },
+        {
+          "id": "clothing-materials",
+          "name": "Clothing & Materials",
+          "genres": [
+            "latex",
+            "leather",
+            "pvc",
+            "rubber",
+            "nylon",
+            "hosiery",
+            "zentai",
+            "tight-clothing",
+            "uniform-aesthetic"
+          ]
+        },
+        {
+          "id": "restraint",
+          "name": "Restraint & Accessories",
+          "genres": [
+            "bondage",
+            "rope-restraint",
+            "cuffs",
+            "chastity",
+            "consensual-restriction"
+          ]
+        },
+        {
+          "id": "power-dynamics",
+          "name": "Power Dynamics",
+          "genres": [
+            "femdom",
+            "dominance",
+            "submission",
+            "role-reversal",
+            "consensual-humiliation",
+            "service-dynamic"
+          ]
+        },
+        {
+          "id": "body-fetish",
+          "name": "Body & Appearance Fetish",
+          "genres": [
+            "armpits",
+            "body-hair",
+            "pubic-hair",
+            "sweat",
+            "body-odor",
+            "musk",
+            "tattoo-focus",
+            "muscle-focus"
+          ]
+        },
+        {
+          "id": "sensory",
+          "name": "Sensory Fetish",
+          "genres": [
+            "smell",
+            "sniffing",
+            "spit",
+            "sensory-play",
+            "texture-focus"
+          ]
+        },
+        {
+          "id": "fluids",
+          "name": "Fluids & Bodily Themes",
+          "genres": [
+            "watersports",
+            "milk-fetish",
+            "adult-nursing-relationship",
+            "farting",
+            "vomit-fetish"
+          ]
+        },
+        {
+          "id": "roleplay-fantasy",
+          "name": "Roleplay & Fantasy",
+          "genres": [
+            "roleplay",
+            "uniform-roleplay",
+            "cosplay-fantasy",
+            "character-dynamic",
+            "exhibitionism-consensual",
+            "voyeurism-staged-consensual"
+          ]
+        },
+        {
+          "id": "niche-fetish",
+          "name": "Niche Fetish",
+          "genres": [
+            "vore-fictional",
+            "microphilia-fictional",
+            "omorashi",
+            "human-furniture-staged",
+            "symphorophilia"
+          ]
+        },
+        {
+          "id": "edging-gooning",
+          "name": "Edging & Gooner Culture",
+          "genres": [
+            "edging",
+            "gooning",
+            "eye-contact-edit",
+            "loop-edit",
+            "hypnotic-edit"
+          ]
+        }
+      ]
     },
     {
       "id": "devils-poll",
-      "name": "THE DEVIL'S POLL"
+      "name": "THE DEVIL'S POLL",
+      "status": "canonical",
+      "description": "Sondaggi, confronti e decisioni editoriali affidate alla community.",
+      "subcategories": [
+        {
+          "id": "performer-battle",
+          "name": "Performer vs Performer",
+          "genres": [
+            "performer-comparison",
+            "performer-bracket"
+          ]
+        },
+        {
+          "id": "creator-battle",
+          "name": "Creator vs Creator",
+          "genres": [
+            "creator-comparison",
+            "creator-bracket"
+          ]
+        },
+        {
+          "id": "celebrity-battle",
+          "name": "Celebrity Battles",
+          "genres": [
+            "celebrity-comparison",
+            "character-comparison"
+          ]
+        },
+        {
+          "id": "look-battle",
+          "name": "Look & Style Battles",
+          "genres": [
+            "best-look",
+            "best-outfit",
+            "best-fashion-moment"
+          ]
+        },
+        {
+          "id": "scene-battle",
+          "name": "Scene & Media Battles",
+          "genres": [
+            "best-scene",
+            "best-edit",
+            "best-clip"
+          ]
+        },
+        {
+          "id": "fetish-poll",
+          "name": "Fetish & Genre Polls",
+          "genres": [
+            "genre-choice",
+            "niche-choice",
+            "community-preference"
+          ]
+        },
+        {
+          "id": "community-choice",
+          "name": "Community Choice",
+          "genres": [
+            "next-spotlight",
+            "next-baal-edit",
+            "content-request-vote"
+          ]
+        },
+        {
+          "id": "rankings",
+          "name": "Rankings & Tournaments",
+          "genres": [
+            "ranking",
+            "top-list",
+            "knockout-bracket",
+            "this-or-that"
+          ]
+        },
+        {
+          "id": "seasonal-poll",
+          "name": "Seasonal & Event Polls",
+          "genres": [
+            "event-poll",
+            "anniversary-poll",
+            "seasonal-special"
+          ]
+        }
+      ]
     }
   ],
-  "behind_baal": {
-    "id": "behind-baal",
-    "name": "BEHIND BAAL",
-    "type": "rubrica_trasversale"
+  "cross_cutting_rubrics": [
+    {
+      "id": "behind-baal",
+      "name": "BEHIND BAAL",
+      "status": "canonical",
+      "frequency": "weekly",
+      "formats": [
+        "project-update",
+        "statistics",
+        "editorial-decision",
+        "community-appreciation",
+        "lessons-learned",
+        "weekly-recap",
+        "workflow-bts"
+      ]
+    }
+  ],
+  "formats": [
+    {
+      "id": "photo",
+      "name": "Photo",
+      "media_type": "image"
+    },
+    {
+      "id": "photo-collection",
+      "name": "Photo Collection",
+      "media_type": "image"
+    },
+    {
+      "id": "video-clip",
+      "name": "Video Clip",
+      "media_type": "video"
+    },
+    {
+      "id": "long-video",
+      "name": "Long Video",
+      "media_type": "video"
+    },
+    {
+      "id": "gif",
+      "name": "GIF",
+      "media_type": "animation"
+    },
+    {
+      "id": "video-edit",
+      "name": "Video Edit",
+      "media_type": "video"
+    },
+    {
+      "id": "pmv-format",
+      "name": "PMV",
+      "media_type": "video"
+    },
+    {
+      "id": "compilation-format",
+      "name": "Compilation",
+      "media_type": "video"
+    },
+    {
+      "id": "split-screen",
+      "name": "Split Screen",
+      "media_type": "image_or_video"
+    },
+    {
+      "id": "comparison",
+      "name": "Comparison",
+      "media_type": "image_or_video"
+    },
+    {
+      "id": "meme",
+      "name": "Meme",
+      "media_type": "image_or_video"
+    },
+    {
+      "id": "quote-post",
+      "name": "Quote Post",
+      "media_type": "native_post"
+    },
+    {
+      "id": "poll",
+      "name": "Poll",
+      "media_type": "native_poll"
+    },
+    {
+      "id": "ranking",
+      "name": "Ranking",
+      "media_type": "text_or_image"
+    },
+    {
+      "id": "teaser",
+      "name": "Teaser",
+      "media_type": "image_or_video"
+    },
+    {
+      "id": "creator-spotlight",
+      "name": "Creator Spotlight",
+      "media_type": "image_or_video_or_text"
+    },
+    {
+      "id": "scene-spotlight",
+      "name": "Scene Spotlight",
+      "media_type": "image_or_video_or_text"
+    },
+    {
+      "id": "bts",
+      "name": "BTS",
+      "media_type": "image_or_video"
+    },
+    {
+      "id": "interview",
+      "name": "Interview",
+      "media_type": "text_or_video"
+    },
+    {
+      "id": "reaction",
+      "name": "Reaction",
+      "media_type": "text_or_video"
+    },
+    {
+      "id": "tribute-edit",
+      "name": "Tribute Edit",
+      "media_type": "video"
+    }
+  ],
+  "subject_prelist": {
+    "optional": true,
+    "categories": [
+      {
+        "id": "pornstar",
+        "name": "Pornstar / Adult Performer",
+        "allowed_pillars": [
+          "porno-explicit"
+        ]
+      },
+      {
+        "id": "adult-creator",
+        "name": "Adult Creator",
+        "allowed_pillars": [
+          "porno-explicit"
+        ]
+      },
+      {
+        "id": "model",
+        "name": "Model",
+        "allowed_pillars": [
+          "vip-shoot",
+          "porno-explicit"
+        ]
+      },
+      {
+        "id": "vip",
+        "name": "VIP / Public Figure",
+        "allowed_pillars": [
+          "vip-shoot"
+        ]
+      },
+      {
+        "id": "cosplay-creator",
+        "name": "Cosplay Creator",
+        "allowed_pillars": [
+          "vip-shoot",
+          "porno-explicit"
+        ]
+      },
+      {
+        "id": "influencer",
+        "name": "Influencer / General Creator",
+        "allowed_pillars": [
+          "vip-shoot"
+        ]
+      },
+      {
+        "id": "fictional-character",
+        "name": "Fictional Character",
+        "allowed_pillars": [
+          "vip-shoot"
+        ]
+      }
+    ],
+    "fields": [
+      "id",
+      "stage_name_or_name",
+      "aliases",
+      "category",
+      "adult_status_verified",
+      "genres",
+      "associated_hashtags",
+      "source",
+      "verification_status",
+      "notes"
+    ],
+    "rule": "Non inserire automaticamente persone reali: l'archivio iniziale può partire vuoto e i record vanno verificati."
   },
-  "formats": [],
-  "categories": [],
-  "genres": []
+  "editorial_statuses": [
+    {
+      "id": "canonical",
+      "label": "Canonico BAAL"
+    },
+    {
+      "id": "editorial-expansion",
+      "label": "Espansione editoriale"
+    },
+    {
+      "id": "needs-review",
+      "label": "Da verificare"
+    }
+  ]
 }
