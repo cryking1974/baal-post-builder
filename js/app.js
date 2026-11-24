@@ -18,7 +18,7 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 async function getJSON(path) {
   const separator = path.includes("?") ? "&" : "?";
   const response = await fetch(
-    `${path}${separator}v=3.1.0`,
+    `${path}${separator}v=3.1.1`,
     { cache: "no-store" }
   );
 
@@ -97,81 +97,55 @@ function updateGenres() {
 function packageTags() {
   const pillarId = pillar()?.id || "";
   const subId = subcategory()?.id || "";
-  const genreId = $("#genre").value || "";
+  const genreId = $("#genre")?.value || "";
+  const filter = $("#tagStatus")?.value || "all";
 
-  const context = `${pillarId} ${subId} ${genreId}`.toLowerCase();
-  const relevantPackages = {
-    "devils-poll": [
-      "poll", "celebrity", "performer",
-      "adult-creator", "gooner", "foot-fetish"
-    ],
-    "vip-shoot": [
-      "celebrity", "glamour", "cosplay",
-      "edit", "adult-creator"
-    ],
-    "extreme-fetish": [
-      "foot-fetish", "femdom-bdsm", "gooner",
-      "edit", "anal"
-    ],
-    "porno-explicit": [
-      "performer", "adult-creator", "gooner", "edit"
-    ]
-  };
+  if (!pillarId || !subId) return [];
 
-  let results = [];
+  const results = [];
 
   for (const pkg of db.hashtags.packages || []) {
-    let relevant = (relevantPackages[pillarId] || []).includes(pkg.id);
+    const relevant = (pkg.associations || []).some(association => {
+      if (
+        association.pillar_id !== pillarId ||
+        association.subcategory_id !== subId
+      ) return false;
 
-    if (context.includes("feet") || context.includes("foot")) {
-      relevant = ["foot-fetish", "gooner"].includes(pkg.id);
-    }
-
-    if (context.includes("anal") || context.includes("rear")) {
-      relevant = ["anal", "anal-rear", "rear-focused"].includes(pkg.id);
-    }
-
-    if (context.includes("cosplay")) {
-      relevant = ["cosplay", "glamour"].includes(pkg.id);
-    }
-
-    if (
-      context.includes("celebrity") ||
-      context.includes("movie") ||
-      context.includes("red-carpet")
-    ) {
-      relevant = ["celebrity", "glamour"].includes(pkg.id);
-    }
+      // Il genere selezionato restringe i suggerimenti.
+      // Senza genere, mostra i pacchetti della sottocategoria.
+      return !genreId || (association.genre_ids || []).includes(genreId);
+    });
 
     if (!relevant) continue;
 
-    for (const status of ["base", "optional", "test"]) {
-      const filter = $("#tagStatus")?.value || "all";
+    for (const sourceStatus of ["base", "optional", "test"]) {
+      const tags = pkg[sourceStatus] || [];
+      const effectiveStatus = pkg.status_override || sourceStatus;
+      const filterStatus = effectiveStatus === "candidate_unverified"
+        ? "test"
+        : sourceStatus;
 
-      if (filter !== "all" && filter !== status) continue;
+      if (filter !== "all" && filter !== filterStatus) continue;
 
-      (pkg[status] || []).forEach(tag => {
-        if (!tag.includes("[")) {
-          results.push({
-            tag,
-            status,
-            package: pkg.name || pkg.id
-          });
-        }
+      tags.forEach(tag => {
+        if (typeof tag !== "string" || tag.includes("[")) return;
+        results.push({
+          tag,
+          status: effectiveStatus,
+          package: pkg.name || pkg.id
+        });
       });
     }
   }
 
   const query = $("#tagSearch")?.value.trim().toLowerCase() || "";
-
-  results = results.filter(item =>
+  const filtered = results.filter(item =>
     !query ||
-    `${item.tag} ${item.package}`.toLowerCase().includes(query)
+    `${item.tag} ${item.package} ${item.status}`.toLowerCase().includes(query)
   );
 
-  return [...new Map(results.map(item => [item.tag, item])).values()];
+  return [...new Map(filtered.map(item => [item.tag, item])).values()];
 }
-
 function renderTagSuggestions() {
   const box = $("#suggestions");
   if (!box) return;
