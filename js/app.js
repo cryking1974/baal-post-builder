@@ -18,7 +18,7 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 async function getJSON(path) {
   const separator = path.includes("?") ? "&" : "?";
   const response = await fetch(
-    `${path}${separator}v=3.1.2`,
+    `${path}${separator}v=3.1.3`,
     { cache: "no-store" }
   );
 
@@ -266,71 +266,120 @@ function makeBrief() {
   const format = $("#format").selectedOptions[0]?.textContent || "Da definire";
   const subjects = getSubjectData();
   const isPoll = $("#format").value === "poll";
+  const selectedHashtags = [...selectedTags].filter(Boolean);
+  const description = $("#description").value.trim();
+  const contextType = $("#contextType").selectedOptions[0]?.textContent || "Non specificato";
+  const contextDetail = $("#contextDetail").value.trim();
+  const angle = $("#angle").value.trim();
+  const objective = $("#objective").selectedOptions[0]?.textContent || "Non specificato";
+  const genre = $("#genre").selectedOptions[0]?.textContent || "Non specificato";
+  const mode = $("#mode").selectedOptions[0]?.textContent || "Contenuto singolo";
 
   const lines = [
-    "BAAL AFTER DARK — SCHEDA CONTENUTO",
+    "BAAL AFTER DARK — BRIEF EDITORIALE PER LA GENERAZIONE DEL POST",
     "",
-    `Descrizione media: ${$("#description").value.trim()}`,
-    `Pilastro: ${p?.name || "Da definire"}`,
-    `Sottocategoria: ${s?.name || "Da definire"}`,
-    `Genere: ${$("#genre").selectedOptions[0]?.textContent || "Da definire"}`,
-    `Formato: ${format}`,
-    `Modalità: ${$("#mode").selectedOptions[0]?.textContent || "Contenuto singolo"}`,
+    "1. CLASSIFICAZIONE",
+    `Pilastro: ${p?.name || "Non selezionato"}`,
+    `Sottocategoria: ${s?.name || "Non selezionata"}`,
+    `Genere: ${genre}`,
+    `Formato media: ${format}`,
+    `Modalità: ${mode}`,
     "",
-    "PROTAGONISTI"
+    "2. MATERIALE DI PARTENZA",
+    `Descrizione fornita dall'autore: ${description || "Non fornita"}`,
+    "Tratta questa descrizione come unica fonte dei fatti visivi. Non aggiungere azioni, dettagli, identità o circostanze che non siano dichiarati."
   ];
 
+  lines.push("", "3. SOGGETTI");
   if (subjects.length) {
     subjects.forEach((subject, index) => {
-      lines.push(
-        `${index + 1}. ${subject.name} | Categoria: ${subject.category}`
-      );
+      lines.push(`${index + 1}. ${subject.name} | Categoria: ${subject.category}`);
     });
   } else {
-    lines.push("Non indicati");
+    lines.push("Nessun soggetto indicato.");
   }
 
   lines.push(
     "",
-    `Contesto: ${$("#contextType").value || "Non specificato"}`,
-    `Dettaglio contesto: ${$("#contextDetail").value.trim() || "Non specificato"}`,
-    `Angolazione editoriale: ${$("#angle").value.trim() || "Da definire"}`,
-    `Obiettivo: ${$("#objective").value || "Non specificato"}`
+    "4. CONTESTO E DIREZIONE EDITORIALE",
+    `Tipo di contesto: ${contextType}`,
+    `Dettaglio contesto: ${contextDetail || "Non specificato"}`,
+    `Angolazione desiderata dall'autore: ${angle || "Non specificata: scegli l'angolazione più efficace usando soltanto i dati disponibili"}`,
+    `Obiettivo del post: ${objective}`,
+    "",
+    "5. HASHTAG SELEZIONATI",
+    selectedHashtags.length ? selectedHashtags.join(" ") : "Nessun hashtag selezionato.",
+    "Usa gli hashtag selezionati senza inventarne altri. Mantieni soltanto quelli coerenti con il contenuto; se un tag appare incongruente, segnalalo nelle note invece di inserirlo forzatamente."
   );
 
   if (isPoll) {
     lines.push(
       "",
-      "SONDAGGIO",
-      `Domanda: ${$("#pollQuestion").value.trim() || "Da definire"}`
+      "6. DATI DEL SONDAGGIO",
+      `Domanda: ${$("#pollQuestion").value.trim() || "Non specificata"}`
     );
 
-    $$(".poll-option").forEach((option, index) => {
-      if (option.value.trim()) {
-        lines.push(`${index + 1}. ${option.value.trim()}`);
-      }
-    });
+    const options = $$(".poll-option")
+      .map(option => option.value.trim())
+      .filter(Boolean);
+
+    if (options.length) {
+      options.forEach((option, index) => lines.push(`Opzione ${index + 1}: ${option}`));
+    } else {
+      lines.push("Opzioni: non specificate.");
+    }
 
     lines.push(
-      `Durata: ${$("#pollDuration").value || "Non specificata"}`,
-      `Nota: ${$("#pollNote").value.trim() || "Nessuna"}`
+      `Durata prevista: ${$("#pollDuration").value || "Non specificata"}`,
+      `Nota sul sondaggio: ${$("#pollNote").value.trim() || "Nessuna"}`
     );
   }
 
   lines.push(
     "",
-    `Hashtag: ${[...selectedTags].join(" ")}`,
+    "7. DIREZIONE DEL MARCHIO BAAL",
+    "Scrivi in inglese naturale, idiomatico e incisivo per un pubblico internazionale.",
+    "Voce BAAL: sicura, intelligente, ironica e tagliente; provocatoria quando il contesto lo consente, mai supplichevole o da fan account.",
+    "Evita complimenti generici, cliché da chatbot, aggettivi gonfi, aperture ripetitive, emoji decorative e domande inserite soltanto per ottenere interazioni.",
+    "Il copy deve aggiungere un punto di vista, un dettaglio significativo o un motivo per partecipare: non limitarti a parafrasare la descrizione del media.",
     "",
-    "ISTRUZIONI PER IL COPY",
-    "Scrivi il copy in inglese naturale, coerente con il pilastro e con l'angolazione indicata.",
-    "Usa la descrizione come fonte dei fatti: riorganizza soggetti, azioni, dettagli visivi e atmosfera senza inventare informazioni.",
-    "Rispetta il limite ordinario di 280 caratteri, hashtag inclusi.",
-    "Mantieni il controllo editoriale all'autore."
+    "8. CRITERI EDITORIALI SPECIFICI",
+    "PORNO EXPLICIT: privilegia identificazione corretta della performer, genere effettivo e un dettaglio distintivo non grafico. Non trasformare il copy in una descrizione sessuale esplicita.",
+    "VIP SHOOT: collega persona, momento e contesto. Spiega perché il contenuto è interessante; non sessualizzare artificialmente una figura pubblica e non inventare attualità o viralità.",
+    "EXTREME FETISH: usa la terminologia della nicchia con precisione. Mantieni il focus sul dettaglio o sulla cultura specifica, senza confondere categorie diverse e senza descrizioni sessuali grafiche.",
+    "THE DEVIL'S POLL: crea un'introduzione breve e una domanda chiara. Mantieni le opzioni equilibrate e distinguibili. Il testo del post deve restare separato dalle opzioni native del sondaggio X.",
+    "BEHIND BAAL: usa un tono trasparente, concreto e autoironico. Non gonfiare risultati né inventare retroscena."
+  );
+
+  if (isPoll) {
+    lines.push(
+      "",
+      "9. OUTPUT RICHIESTO — SONDAGGIO",
+      "Fornisci il testo introduttivo/domanda destinato al post e riporta separatamente le opzioni native. Non incorporare le opzioni nel testo del post come se fossero hashtag o una lista da pubblicare."
+    );
+  } else {
+    lines.push(
+      "",
+      "9. OUTPUT RICHIESTO — POST ORDINARIO",
+      "Produci una sola versione finale, pronta da copiare su X. Non aggiungere titoli, spiegazioni, virgolette o commenti fuori dal copy."
+    );
+  }
+
+  lines.push(
+    "",
+    "10. VINCOLI TECNICI E DI AFFIDABILITÀ",
+    "Limite massimo: 280 caratteri X per il testo pubblicabile, inclusi spazi, punteggiatura, emoji e hashtag. Mira normalmente a 220–260 caratteri senza allungare artificialmente il testo.",
+    "Conta il testo completo esattamente come verrà pubblicato. Se supera 280 caratteri, riscrivilo: non troncarlo. Non dichiarare un conteggio esatto se non puoi verificarlo con un conteggio compatibile con X.",
+    "Non inventare fatti, trend, popolarità, reazioni del pubblico, attribuzioni, consenso, età o diritti di utilizzo. Distingui i fatti forniti dalle interpretazioni editoriali.",
+    "Prima della pubblicazione, l'autore deve verificare che le persone ritratte siano adulte, che produzione e distribuzione siano consensuali e che fonte, diritti e autorizzazioni siano adeguati. Queste verifiche non sono certificate da questa scheda.",
+    "Se un dato essenziale manca o il materiale presenta un rischio evidente, segnala il problema e non colmare il vuoto con supposizioni.",
+    "",
+    "CONSEGNA",
+    "Restituisci il copy pronto per X. Aggiungi una nota soltanto se esiste un problema concreto di coerenza, pertinenza degli hashtag o verifica editoriale."
   );
 
   return lines.join("\n");
 }
-
 function resetAll() {
   document.querySelectorAll("input, textarea").forEach(element => {
     element.value = "";
