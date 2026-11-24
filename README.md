@@ -1,16 +1,20 @@
-# BAAL AFTER DARK – Post Builder
+# BAAL AFTER DARK – Post Builder v3 (bozza coordinata)
 
-Prima versione di struttura per GitHub Pages.
+Versione statica per GitHub Pages. Non scrive direttamente nel repository: l'archivio hashtag può essere esportato, modificato e poi sostituito manualmente nel repository.
 
-## File
-- `index.html`: pagina principale
-- `css/style.css`: grafica
-- `js/app.js`: logica iniziale
-- `data/taxonomy.json`: pilastri e tassonomia
-- `data/hashtags.json`: archivio hashtag
-- `data/subjects.json`: archivio protagoniste/creator
+## Struttura
+- `index.html`: interfaccia
+- `css/style.css`: stile
+- `js/app.js`: logica
+- `data/taxonomy.json`: tassonomia attuale, conservata senza espansioni
+- `data/hashtags.json`: Dizionario Slang X attuale, conservato
+- `data/subjects.json`: prelista vuota e categorie verificate
 
-## Pubblicazione
-In GitHub: Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
+## Installazione
+Sostituire i file della copia di lavoro, mantenendo le tre cartelle e i percorsi indicati. Non sovrascrivere la versione online prima dei test.
 
-Nota: questa è una struttura iniziale. La generazione AI non è ancora collegata e gli archivi hashtag/protagoniste sono volutamente vuoti, in attesa di essere popolati dai documenti BAAL.
+## Limiti di questa versione
+- Il Builder prepara una scheda da copiare in ChatGPT; non genera autonomamente il copy e non esegue controlli AI.
+- I suggerimenti hashtag derivano dai pacchetti esistenti e da regole contestuali iniziali; non sono dati di popolarità né trend verificati.
+- L'esportazione hashtag scarica il JSON corrente; la persistenza richiede la sostituzione manuale del file nel repository.
+- La tassonomia mantiene i generi attuali come stringhe. Il livello sottogenere non è ancora popolato.
