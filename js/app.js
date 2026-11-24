@@ -266,7 +266,7 @@ function makeBrief() {
   const format = $("#format").selectedOptions[0]?.textContent || "Da definire";
   const subjects = getSubjectData();
   const isPoll = $("#format").value === "poll";
-  const selectedHashtags = [...selectedTags].filter(Boolean);
+  const manualHashtags = [...selectedTags].filter(Boolean);
   const subjectHashtags = [...new Set(subjects
     .filter(subject => subject.name)
     .map(subject => {
@@ -276,7 +276,8 @@ function makeBrief() {
       return normalized ? `#${normalized}` : "";
     })
     .filter(Boolean)
-    .filter(tag => !selectedHashtags.includes(tag)))];
+    .filter(tag => !manualHashtags.includes(tag)))];
+  const selectedHashtags = [...manualHashtags, ...subjectHashtags];
   const description = $("#description").value.trim();
   const contextType = $("#contextType").selectedOptions[0]?.textContent || "Non specificato";
   const contextDetail = $("#contextDetail").value.trim();
@@ -318,7 +319,9 @@ function makeBrief() {
     `Obiettivo del post: ${objective}`,
     "",
     "5. HASHTAG",
-    `Hashtag tematici selezionati manualmente dall'autore: ${selectedHashtags.length ? selectedHashtags.join(" ") : "Nessuno"}`,
+    `Hashtag tematici selezionati manualmente dall’autore: ${manualHashtags.length ? manualHashtags.join(" ") : "Nessuno"}`,
+    `Hashtag dei protagonisti aggiunti automaticamente: ${subjectHashtags.length ? subjectHashtags.join(" ") : "Nessuno"}`,
+    `Hashtag complessivi da usare nel copy: ${selectedHashtags.join(" ")}`,
     `Hashtag dei protagonisti ricavati automaticamente dai nomi inseriti: ${subjectHashtags.length ? subjectHashtags.join(" ") : "Nessuno"}`,
     "Includi i tag dei protagonisti soltanto se i nomi inseriti identificano davvero le persone protagoniste del media. Non inventare altri hashtag: i tag tematici sono scelti manualmente dall'autore. Se un tag selezionato appare incongruente, segnalalo nelle note invece di sostituirlo autonomamente."
   );
