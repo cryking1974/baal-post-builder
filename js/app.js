@@ -271,9 +271,9 @@ function makeBrief() {
     .filter(subject => subject.name)
     .map(subject => {
       const normalized = subject.name.normalize("NFKD")
-        .replace(/[\\u0300-\\u036f]/g, "")
-        .replace(/[^\\p{L}\\p{N}]+/gu, "");
-      return normalized ? `#${normalized}` : "";
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\p{L}\p{N}]+/gu, "");
+      return normalized ? \`#\${normalized}\` : "";
     })
     .filter(Boolean)
     .filter(tag => !manualHashtags.includes(tag)))];
