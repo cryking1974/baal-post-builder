@@ -7,7 +7,9 @@
     "optional_from_dictionary": "Aggiunta opzionale indicata dal Dizionario BAAL.",
     "test_from_dictionary": "Variante indicata dal Dizionario BAAL come da testare.",
     "avoid": "Termine che il Dizionario BAAL raccomanda di evitare.",
-    "candidate_unverified": "Termine candidato aggiunto per copertura tassonomica; significato/uso su X da verificare, nessuna affermazione di popolarità."
+    "candidate_unverified": "Tag candidato per copertura tassonomica; non approvato come popolare o efficace.",
+    "approved_for_use": "Tag documentato nel Dizionario BAAL; usare soltanto quando pertinente. Non equivale a popolarità verificata.",
+    "conditional": "Tag documentato come opzionale o valido solo in un contesto specifico."
   },
   "packages": [
     {
@@ -422,7 +424,9 @@
         "#Anal",
         "#AnalFetish",
         "#RearFocused",
-        "#AssFocus"
+        "#AssFocus",
+        "#AnalPlay",
+        "#Ass"
       ],
       "status_override": "candidate_unverified",
       "associations": [
@@ -471,6 +475,214 @@
         }
       ],
       "notes": "Hashtag generici da usare soltanto quando pertinenti; verificare separatamente il contesto e l’età dei personaggi."
+    },
+    {
+      "id": "clothing-materials",
+      "name": "Clothing & Materials",
+      "use_when": "Solo quando il materiale o l'abbigliamento fetish è il soggetto editoriale centrale.",
+      "base": [
+        "#Latex"
+      ],
+      "optional": [
+        "#Cosplay",
+        "#NSFW"
+      ],
+      "test": [
+        "#PVC",
+        "#Rubber",
+        "#Leather",
+        "#Zentai",
+        "#Hosiery",
+        "#Stockings",
+        "#Nylon",
+        "#UniformFetish",
+        "#LatexFashion"
+      ],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "clothing-materials",
+          "genre_ids": [
+            "latex",
+            "leather",
+            "pvc",
+            "rubber",
+            "nylon",
+            "hosiery",
+            "zentai",
+            "tight-clothing",
+            "uniform-aesthetic"
+          ]
+        }
+      ],
+      "notes": "#Cosplay e #NSFW sono contestuali, non automatici. I tag in test sono candidati non verificati."
+    },
+    {
+      "id": "body-appearance",
+      "name": "Body & Appearance Fetish",
+      "use_when": "Quando una caratteristica fisica o un dettaglio estetico è il focus effettivo del contenuto.",
+      "base": [
+        "#Fetish"
+      ],
+      "optional": [
+        "#NSFW",
+        "#Model"
+      ],
+      "test": [
+        "#ArmpitFetish",
+        "#BodyHair",
+        "#NaturalBodyHair",
+        "#TattooFetish",
+        "#MuscleFetish",
+        "#SweatFetish",
+        "#Musk"
+      ],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "body-fetish",
+          "genre_ids": [
+            "armpits",
+            "body-hair",
+            "pubic-hair",
+            "sweat",
+            "body-odor",
+            "musk",
+            "tattoo-focus",
+            "muscle-focus"
+          ]
+        }
+      ],
+      "notes": "#Model solo se il contenuto è realmente un servizio fotografico/modeling o glamour. I tag specifici sono candidati non verificati."
+    },
+    {
+      "id": "sensory-fetish",
+      "name": "Sensory Fetish",
+      "use_when": "Contenuti in cui l'esperienza sensoriale è il tema centrale.",
+      "base": [],
+      "optional": [],
+      "test": [],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "sensory",
+          "genre_ids": [
+            "smell",
+            "sniffing",
+            "spit",
+            "sensory-play",
+            "texture-focus"
+          ]
+        }
+      ],
+      "notes": "Il Dizionario BAAL non documenta un pacchetto hashtag specifico per questa sottocategoria. Non aggiungere tag generici per riempire il campo."
+    },
+    {
+      "id": "fluids-bodily-themes",
+      "name": "Fluids & Bodily Themes",
+      "use_when": "Solo quando il tema corporeo specifico è centrale e il contenuto è consentito dalle regole della piattaforma.",
+      "base": [],
+      "optional": [],
+      "test": [],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "fluids",
+          "genre_ids": [
+            "watersports",
+            "milk-fetish",
+            "adult-nursing-relationship",
+            "farting",
+            "vomit-fetish"
+          ]
+        }
+      ],
+      "notes": "Il Dizionario BAAL non documenta un pacchetto hashtag specifico per questa sottocategoria. Nessun tag candidato aggiunto senza una base documentale."
+    },
+    {
+      "id": "roleplay-fantasy",
+      "name": "Roleplay & Fantasy",
+      "use_when": "Roleplay consensuale, cosplay fantasy e dinamiche di personaggio.",
+      "base": [],
+      "optional": [
+        "#Cosplay",
+        "#CosplayCreator",
+        "#Latex",
+        "#BDSM",
+        "#Femdom",
+        "#Domme",
+        "#Dominance",
+        "#Submission",
+        "#Kink"
+      ],
+      "test": [],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "roleplay-fantasy",
+          "genre_ids": [
+            "roleplay",
+            "uniform-roleplay",
+            "cosplay-fantasy",
+            "character-dynamic",
+            "exhibitionism-consensual",
+            "voyeurism-staged-consensual"
+          ]
+        }
+      ],
+      "notes": "Usare soltanto i tag coerenti con il contenuto specifico: non esiste un pacchetto autonomo documentato per ogni forma di roleplay. I tag BDSM/Femdom non sono automatici."
+    },
+    {
+      "id": "niche-fetish",
+      "name": "Niche Fetish",
+      "use_when": "Temi fetish di nicchia, descritti in modo accurato e senza attribuire popolarità ai tag.",
+      "base": [],
+      "optional": [],
+      "test": [],
+      "status_map": {
+        "base": "base_from_dictionary",
+        "optional": "optional_from_dictionary",
+        "test": "candidate_unverified"
+      },
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "niche-fetish",
+          "genre_ids": [
+            "vore-fictional",
+            "microphilia-fictional",
+            "omorashi",
+            "human-furniture-staged",
+            "symphorophilia"
+          ]
+        }
+      ],
+      "notes": "Il Dizionario BAAL non documenta un pacchetto hashtag specifico per questa sottocategoria. Non sono stati inventati tag."
     }
   ],
   "slang_terms": [
@@ -815,5 +1027,21 @@
       "name": "CELEBRITY AFTER HOURS",
       "description": "Celebrity e pop culture."
     }
-  ]
+  ],
+  "taxonomy_coverage": {
+    "pillar_id": "extreme-fetish",
+    "subcategory_ids": [
+      "feet-footwear",
+      "anal-rear-focused",
+      "clothing-materials",
+      "restraint",
+      "body-fetish",
+      "sensory",
+      "fluids",
+      "roleplay-fantasy",
+      "niche-fetish",
+      "edging-gooning"
+    ],
+    "policy": "Le sottocategorie senza pacchetto hashtag documentato restano senza tag dedicati. Non colmare i vuoti con hashtag inventati."
+  }
 }
