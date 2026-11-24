@@ -1,20 +1,22 @@
-# BAAL AFTER DARK – Post Builder v3 (bozza coordinata)
+# BAAL AFTER DARK – Post Builder v3.1.0
 
-Versione statica per GitHub Pages. Non scrive direttamente nel repository: l'archivio hashtag può essere esportato, modificato e poi sostituito manualmente nel repository.
+Pacchetto di aggiornamento coordinato.
 
-## Struttura
-- `index.html`: interfaccia
-- `css/style.css`: stile
-- `js/app.js`: logica
-- `data/taxonomy.json`: tassonomia attuale, conservata senza espansioni
-- `data/hashtags.json`: Dizionario Slang X attuale, conservato
-- `data/subjects.json`: prelista vuota e categorie verificate
+## File inclusi
+- `index.html` – interfaccia v3.0.0 (invariata)
+- `css/style.css` – stile v3.0.0 (invariato)
+- `js/app.js` – motore aggiornato per associazioni hashtag esplicite
+- `data/taxonomy.json` – tassonomia proposta v1.1
+- `data/subjects.json` – archivio soggetti v1.1, ancora vuoto e con categorie allineate
+- `data/hashtags.json` – dizionario v1.1 con associazioni ai percorsi tassonomici
 
-## Installazione
-Sostituire i file della copia di lavoro, mantenendo le tre cartelle e i percorsi indicati. Non sovrascrivere la versione online prima dei test.
+## Installazione GitHub Pages
+Sostituire i file mantenendo gli stessi percorsi: `js/app.js` e tutti e tre i file in `data/`. `index.html` e `css/style.css` non richiedono modifiche in questa release.
 
-## Limiti di questa versione
-- Il Builder prepara una scheda da copiare in ChatGPT; non genera autonomamente il copy e non esegue controlli AI.
-- I suggerimenti hashtag derivano dai pacchetti esistenti e da regole contestuali iniziali; non sono dati di popolarità né trend verificati.
-- L'esportazione hashtag scarica il JSON corrente; la persistenza richiede la sostituzione manuale del file nel repository.
-- La tassonomia mantiene i generi attuali come stringhe. Il livello sottogenere non è ancora popolato.
+## Note
+- I tag candidati per Anal & Rear-Focused sono marcati `candidate_unverified`, non come popolari/verificati.
+- Sono stati rimossi i segnaposto hashtag come `#[NomePerformer]`.
+- I suggerimenti vengono mostrati solo quando pilastro, sottocategoria e genere corrispondono a un'associazione esplicita.
+- `#BaalAfterDark` resta globale e preselezionato.
+- Il file subjects resta vuoto: nessuna persona è stata aggiunta automaticamente.
+- La wiki r/BDSMcommunity non è stata acquisita; le voci di quel ramo non sono attribuite a quella fonte.
