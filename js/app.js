@@ -18,7 +18,7 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 async function getJSON(path) {
   const separator = path.includes("?") ? "&" : "?";
   const response = await fetch(
-    `${path}${separator}v=3.1.3`,
+    `${path}${separator}v=3.1.4`,
     { cache: "no-store" }
   );
 
@@ -267,6 +267,16 @@ function makeBrief() {
   const subjects = getSubjectData();
   const isPoll = $("#format").value === "poll";
   const selectedHashtags = [...selectedTags].filter(Boolean);
+  const subjectHashtags = [...new Set(subjects
+    .filter(subject => subject.name)
+    .map(subject => {
+      const normalized = subject.name.normalize("NFKD")
+        .replace(/[\\u0300-\\u036f]/g, "")
+        .replace(/[^\\p{L}\\p{N}]+/gu, "");
+      return normalized ? `#${normalized}` : "";
+    })
+    .filter(Boolean)
+    .filter(tag => !selectedHashtags.includes(tag)))];
   const description = $("#description").value.trim();
   const contextType = $("#contextType").selectedOptions[0]?.textContent || "Non specificato";
   const contextDetail = $("#contextDetail").value.trim();
@@ -307,9 +317,10 @@ function makeBrief() {
     `Angolazione desiderata dall'autore: ${angle || "Non specificata: scegli l'angolazione più efficace usando soltanto i dati disponibili"}`,
     `Obiettivo del post: ${objective}`,
     "",
-    "5. HASHTAG SELEZIONATI",
-    selectedHashtags.length ? selectedHashtags.join(" ") : "Nessun hashtag selezionato.",
-    "Usa gli hashtag selezionati senza inventarne altri. Mantieni soltanto quelli coerenti con il contenuto; se un tag appare incongruente, segnalalo nelle note invece di inserirlo forzatamente."
+    "5. HASHTAG",
+    `Hashtag tematici selezionati manualmente dall'autore: ${selectedHashtags.length ? selectedHashtags.join(" ") : "Nessuno"}`,
+    `Hashtag dei protagonisti ricavati automaticamente dai nomi inseriti: ${subjectHashtags.length ? subjectHashtags.join(" ") : "Nessuno"}`,
+    "Includi i tag dei protagonisti soltanto se i nomi inseriti identificano davvero le persone protagoniste del media. Non inventare altri hashtag: i tag tematici sono scelti manualmente dall'autore. Se un tag selezionato appare incongruente, segnalalo nelle note invece di sostituirlo autonomamente."
   );
 
   if (isPoll) {
