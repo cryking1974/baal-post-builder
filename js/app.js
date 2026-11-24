@@ -1,117 +1,40 @@
-const $ = s => document.querySelector(s);
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 let db = {};
-
-async function getJSON(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`Impossibile caricare ${path} (${response.status})`);
-  return response.json();
-}
-function fillSelect(select, items, placeholder, getValue=x=>x.id, getLabel=x=>x.name) {
-  select.innerHTML = "";
-  const first = document.createElement("option");
-  first.value = ""; first.textContent = placeholder; select.appendChild(first);
-  items.forEach(item => {
-    const option = document.createElement("option");
-    option.value = getValue(item); option.textContent = getLabel(item);
-    select.appendChild(option);
-  });
-}
-function allSubcategories(pillar) { return pillar?.subcategories || []; }
-function currentPillar() { return db.taxonomy.pillars.find(p => p.id === $("#pillar").value); }
-function currentSubcategory() { return allSubcategories(currentPillar()).find(s => s.id === $("#subcategory").value); }
-
-function updateSubcategories() {
-  const subs = allSubcategories(currentPillar());
-  fillSelect($("#subcategory"), subs, subs.length ? "Seleziona sottocategoria" : "Nessuna sottocategoria");
-  $("#subcategory").disabled = !subs.length;
-  updateGenres();
-}
-function updateGenres() {
-  const sub = currentSubcategory();
-  const genres = (sub?.genres || []).map(g => ({id:g,name:g.replaceAll("-"," ")}));
-  fillSelect($("#genre"), genres, genres.length ? "Seleziona genere" : "Nessun genere disponibile");
-  $("#genre").disabled = !genres.length;
-  updateHashtagSuggestions();
-}
-function updateHashtagSuggestions() {
-  const pillar = currentPillar();
-  const sub = currentSubcategory();
-  const genre = $("#genre").value;
-  const words = [pillar?.id, sub?.id, genre].filter(Boolean);
-  const matches = [];
-  (db.hashtags.packages || []).forEach(pkg => {
-    const haystack = `${pkg.id} ${pkg.name} ${pkg.use_when || ""}`.toLowerCase();
-    if (words.some(w => haystack.includes(w.split("-")[0]) || w.includes(pkg.id))) {
-      (pkg.base || []).forEach(tag => matches.push(tag));
-      (pkg.optional || []).forEach(tag => matches.push(tag));
-      (pkg.test || []).forEach(tag => matches.push(tag));
-    }
-  });
-  const unique = [...new Set(matches)].slice(0,24);
-  const box = $("#suggestions");
-  box.innerHTML = "";
-  unique.forEach(tag => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "tag"; b.textContent = tag;
-    b.addEventListener("click", () => addHashtag(tag));
-    box.appendChild(b);
-  });
-}
-function addHashtag(tag) {
-  const input = $("#hashtags");
-  const current = input.value.trim();
-  const tags = current ? current.split(/\s+/) : [];
-  if (!tags.includes(tag)) input.value = [...tags,tag].join(" ");
-}
-function populateSubjects() {
-  const categories = db.subjects.categories || [];
-  fillSelect($("#subjectCategory"), categories, "Nessuna selezione");
-  const names = (db.subjects.subjects || []).map(s => s.stage_name_or_name).filter(Boolean);
-  $("#subjectOptions").innerHTML = names.map(n => `<option value="${String(n).replaceAll("&","&amp;").replaceAll('"',"&quot;")}">`).join("");
-}
-function makeBrief() {
-  const p = currentPillar(), s = currentSubcategory();
-  const selectedFormat = $("#format").selectedOptions[0]?.textContent || "";
-  const chosenGenre = $("#genre").selectedOptions[0]?.textContent || "";
-  const category = $("#subjectCategory").selectedOptions[0]?.textContent || "";
-  return [
-    "BAAL AFTER DARK — SCHEDA CONTENUTO",
-    `Descrizione: ${$("#description").value.trim()}`,
-    `Pilastro: ${p?.name || "Da definire"}`,
-    `Sottocategoria: ${s?.name || "Da definire"}`,
-    `Genere: ${chosenGenre || "Da definire"}`,
-    `Formato: ${selectedFormat || "Da definire"}`,
-    `Categoria protagonista: ${category || "Non indicata"}`,
-    `Protagonista: ${$("#subject").value.trim() || "Non indicata"}`,
-    `Hashtag: ${$("#hashtags").value.trim() || "Da selezionare"}`,
-    "",
-    "Nota: scheda preparatoria. La generazione del copy AI e i controlli editoriali automatici non sono ancora collegati."
-  ].join("\n");
-}
-async function init() {
-  const [taxonomy, hashtags, subjects] = await Promise.all([
-    getJSON("data/taxonomy.json"), getJSON("data/hashtags.json"), getJSON("data/subjects.json")
-  ]);
-  db = {taxonomy,hashtags,subjects};
-  fillSelect($("#pillar"), taxonomy.pillars, "Seleziona un pilastro");
-  fillSelect($("#format"), taxonomy.formats || [], "Seleziona formato");
-  populateSubjects();
-  $("#pillar").addEventListener("change", updateSubcategories);
-  $("#subcategory").addEventListener("change", updateGenres);
-  $("#genre").addEventListener("change", updateHashtagSuggestions);
-  $("#subjectCategory").addEventListener("change", updateHashtagSuggestions);
-  $("#prepare").addEventListener("click", () => {
-    if (!$("#description").value.trim()) { $("#status").textContent = "Inserisci una descrizione del contenuto."; return; }
-    $("#output").textContent = makeBrief();
-    $("#output").hidden = false;
-    $("#copy").disabled = false;
-    $("#status").textContent = "Scheda preparata. Gli archivi sono stati caricati correttamente.";
-  });
-  $("#copy").addEventListener("click", async () => {
-    await navigator.clipboard.writeText($("#output").textContent);
-    $("#status").textContent = "Scheda copiata.";
-  });
-  const totalGenres = taxonomy.pillars.reduce((n,p)=>n+(p.subcategories||[]).reduce((m,s)=>m+(s.genres||[]).length,0),0);
-  $("#status").textContent = `Archivi caricati: ${taxonomy.pillars.length} pilastri, ${totalGenres} voci di genere, ${(hashtags.packages||[]).length} pacchetti hashtag, ${(subjects.categories||[]).length} categorie protagoniste.`;
-}
-init().catch(err => { console.error(err); $("#status").textContent = `Errore: ${err.message}. Verifica che i tre JSON siano presenti nella cartella data.`; });
+const selectedTags = new Set(['#BaalAfterDark']);
+let subjectCount = 0, pollCount = 0;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function getJSON(path){const r=await fetch(path);if(!r.ok)throw new Error(`Impossibile caricare ${path} (${r.status})`);return r.json();}
+function fill(el,items,placeholder,value=x=>x.id,label=x=>x.name){el.innerHTML='';const o=document.createElement('option');o.value='';o.textContent=placeholder;el.append(o);items.forEach(x=>{const op=document.createElement('option');op.value=value(x);op.textContent=label(x);el.append(op);});}
+function pillar(){return db.taxonomy.pillars.find(x=>x.id===$('#pillar').value)}
+function subcategory(){return (pillar()?.subcategories||[]).find(x=>x.id===$('#subcategory').value)}
+function updateSubcategories(){const a=pillar()?.subcategories||[];fill($('#subcategory'),a,a.length?'Seleziona sottocategoria':'Nessuna sottocategoria');$('#subcategory').disabled=!a.length;updateGenres();}
+function updateGenres(){const a=subcategory()?.genres||[];fill($('#genre'),a.map(x=>({id:typeof x==='string'?x:x.id,name:typeof x==='string'?x.replaceAll('-',' '):(x.name||x.id)})),a.length?'Seleziona genere':'Nessun genere disponibile');$('#genre').disabled=!a.length;renderTagSuggestions();}
+function currentTags(){return [...selectedTags];}
+function normalizeTag(t){t=t.trim();if(!t)return '';return '#'+t.replace(/^#+/,'').replace(/[^\p{L}\p{N}_]/gu,'');}
+function packageTags(){const p=pillar()?.id||'',s=subcategory()?.id||'',g=$('#genre').value||'';const context=[p,s,g].join(' ').toLowerCase();let out=[];for(const pkg of db.hashtags.packages||[]){const id=pkg.id;let relevant=false;
+ if(p==='devils-poll')relevant=['poll','celebrity','performer','adult-creator','gooner','foot-fetish'].includes(id);
+ else if(p==='vip-shoot')relevant=['celebrity','glamour','cosplay','edit','adult-creator'].includes(id);
+ else if(p==='extreme-fetish')relevant=['foot-fetish','femdom-bdsm','gooner','edit'].includes(id);
+ else if(p==='porno-explicit')relevant=['performer','adult-creator','gooner','edit'].includes(id);
+ if(context.includes('feet')||context.includes('foot')) relevant=id==='foot-fetish'||id==='gooner';
+ if(context.includes('cosplay')) relevant=id==='cosplay'||id==='glamour';
+ if(context.includes('celebrity')||context.includes('movie')||context.includes('red-carpet')) relevant=id==='celebrity'||id==='glamour';
+ if(relevant){for(const [status,key] of [['base','base'],['optional','optional'],['test','test']]){if($('#tagStatus').value!=='all'&&$('#tagStatus').value!==status)continue;(pkg[key]||[]).forEach(tag=>{if(!tag.includes('['))out.push({tag,status,pkg:pkg.name||pkg.id});});}}
+ }
+ const q=$('#tagSearch').value.trim().toLowerCase();return [...new Map(out.filter(x=>!q||`${x.tag} ${x.pkg}`.toLowerCase().includes(q)).map(x=>[x.tag,x])).values()];}
+function renderTagSuggestions(){const box=$('#suggestions');box.innerHTML='';const tags=packageTags();tags.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='tag'+(selectedTags.has(x.tag)?' selected':'');b.textContent=`${x.tag} · ${x.status}`;b.title=`Pacchetto: ${x.pkg}`;b.addEventListener('click',()=>{selectedTags.has(x.tag)?selectedTags.delete(x.tag):selectedTags.add(x.tag);syncTags();renderTagSuggestions();});box.append(b);});}
+function syncTags(){ $('#hashtags').value=[...selectedTags].join(' '); }
+function readTags(){const raw=$('#hashtags').value.match(/#[\p{L}\p{N}_]+/gu)||[];selectedTags.clear();raw.forEach(x=>selectedTags.add(x));if(!selectedTags.has('#BaalAfterDark'))selectedTags.add('#BaalAfterDark');syncTags();}
+function addSubjectRow(){subjectCount++;const id=subjectCount,row=document.createElement('div');row.className='subject-row';row.dataset.subjectId=id;const cats=db.subjects.categories||[];row.innerHTML=`<div><label>Categoria</label><select class="subject-category"><option value="">Non indicata</option>${cats.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('')}</select></div><div><label>Protagonista</label><input class="subject-name" list="subjectOptions" placeholder="Nome o pseudonimo"><datalist id="subjectOptions">${(db.subjects.subjects||[]).map(s=>`<option value="${esc(s.stage_name_or_name)}"></option>`).join('')}</datalist></div><button class="remove" type="button" aria-label="Rimuovi protagonista">Rimuovi</button>`;$('.remove',row).addEventListener('click',()=>{row.remove();if(!$('#subjects').children.length)addSubjectRow();});$('#subjects').append(row);}
+function addPollOption(value=''){pollCount++;const row=document.createElement('div');row.className='poll-row';row.innerHTML=`<div><label>Opzione ${pollCount}</label><input class="poll-option" maxlength="25" value="${esc(value)}" placeholder="Nome / scelta"></div><button type="button" class="remove">Rimuovi</button>`;$('.remove',row).addEventListener('click',()=>row.remove());$('#pollOptions').append(row);}
+function getSubjectData(){return $$('.subject-row').map(r=>({category:r.querySelector('.subject-category').selectedOptions[0]?.textContent||'Non indicata',name:r.querySelector('.subject-name').value.trim()})).filter(x=>x.name||x.category!=='Non indicata');}
+function makeBrief(){const p=pillar(),s=subcategory(),fmt=$('#format').selectedOptions[0]?.textContent||'Da definire';const subjects=getSubjectData();const poll=fmt.toLowerCase()==='poll';const tags=currentTags();const lines=['BAAL AFTER DARK — SCHEDA CONTENUTO','',`Descrizione media: ${$('#description').value.trim()}`,`Pilastro: ${p?.name||'Da definire'}`,`Sottocategoria: ${s?.name||'Da definire'}`,`Genere: ${$('#genre').selectedOptions[0]?.textContent||'Da definire'}`,`Formato: ${fmt}`,`Modalità: ${$('#mode').selectedOptions[0]?.textContent||'Contenuto singolo'}`,'','PROTAGONISTI'];
+ if(subjects.length)subjects.forEach((x,i)=>lines.push(`${i+1}. ${x.name} | Categoria: ${x.category}`));else lines.push('Non indicati');
+ lines.push('',`Contesto: ${$('#contextType').value||'Non specificato'}`,`Dettaglio contesto: ${$('#contextDetail').value.trim()||'Non specificato'}`,`Angolazione editoriale: ${$('#angle').value.trim()||'Da definire'}`,`Obiettivo: ${$('#objective').value||'Non specificato'}`);
+ if(poll){lines.push('','SONDAGGIO',`Domanda: ${$('#pollQuestion').value.trim()||'Da definire'}`);$$('.poll-option').forEach((x,i)=>{if(x.value.trim())lines.push(`${i+1}. ${x.value.trim()}`)});lines.push(`Durata: ${$('#pollDuration').value||'Non specificata'}`,`Nota: ${$('#pollNote').value.trim()||'Nessuna'}`);}
+ lines.push('',`Hashtag: ${tags.join(' ')||'Nessuno'}`,'','ISTRUZIONI PER IL COPY','Scrivi il copy in inglese naturale, coerente con il pilastro e con l’angolazione indicata. Usa la descrizione come fonte dei fatti: riorganizza soggetti, azioni, dettagli visivi e atmosfera senza inventare informazioni. Rispetta il limite ordinario di 280 caratteri, hashtag inclusi. Mantieni il controllo editoriale all’autore.');return lines.join('\n');}
+function resetAll(){document.querySelectorAll('input,textarea').forEach(x=>x.value='');$('#mode').value='single';$('#contextType').value='';$('#objective').value='';$('#pollDuration').value='';$('#pollOptions').innerHTML='';pollCount=0;addPollOption();addPollOption();$('#pillar').value='';updateSubcategories();$('#format').value='';$('#subjects').innerHTML='';addSubjectRow();selectedTags.clear();selectedTags.add('#BaalAfterDark');syncTags();$('#output').hidden=true;$('#copy').disabled=true;$('#status').textContent='Scheda azzerata.';renderTagSuggestions();}
+function exportHashtags(){const blob=new Blob([JSON.stringify(db.hashtags,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hashtags.json';a.click();URL.revokeObjectURL(url);$('#status').textContent='Archivio hashtag esportato. Modifica il JSON e sostituiscilo nel repository per renderlo permanente.';}
+async function init(){const [taxonomy,hashtags,subjects]=await Promise.all([getJSON('data/taxonomy.json'),getJSON('data/hashtags.json'),getJSON('data/subjects.json')]);db={taxonomy,hashtags,subjects};fill($('#pillar'),taxonomy.pillars,'Seleziona un pilastro');fill($('#format'),taxonomy.formats||[],'Seleziona formato');$('#pillar').addEventListener('change',updateSubcategories);$('#subcategory').addEventListener('change',updateGenres);$('#genre').addEventListener('change',renderTagSuggestions);$('#tagSearch').addEventListener('input',renderTagSuggestions);$('#tagStatus').addEventListener('change',renderTagSuggestions);$('#hashtags').addEventListener('change',readTags);$('#addSubject').addEventListener('click',addSubjectRow);$('#addPollOption').addEventListener('click',()=>addPollOption());$('#clear').addEventListener('click',resetAll);$('#exportTags').addEventListener('click',exportHashtags);$('#prepare').addEventListener('click',()=>{if(!$('#description').value.trim()){$('#status').textContent='Inserisci la descrizione del media.';return;}if($('#format').value==='poll'&&!$('#pollQuestion').value.trim()){$('#status').textContent='Inserisci la domanda del sondaggio.';return;}$('#output').textContent=makeBrief();$('#output').hidden=false;$('#copy').disabled=false;$('#status').textContent='Scheda preparata. Verifica il contenuto prima di copiarlo.';});$('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#output').textContent);$('#status').textContent='Scheda copiata.';}catch{$('#status').textContent='Copia automatica non disponibile: seleziona il testo della scheda.';}});addSubjectRow();addPollOption();addPollOption();syncTags();renderTagSuggestions();$('#status').textContent=`Archivi caricati: ${taxonomy.pillars.length} pilastri, ${hashtags.packages.length} pacchetti hashtag, ${subjects.categories.length} categorie protagoniste.`;}
+init().catch(e=>{$('#status').textContent=`Errore: ${e.message}. Verifica i tre file JSON nella cartella data.`;console.error(e);});
