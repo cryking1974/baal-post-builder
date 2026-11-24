@@ -18,7 +18,7 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 async function getJSON(path) {
   const separator = path.includes("?") ? "&" : "?";
   const response = await fetch(
-    `${path}${separator}v=3.1.1`,
+    `${path}${separator}v=3.1.2`,
     { cache: "no-store" }
   );
 
