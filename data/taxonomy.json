@@ -1,13 +1,41 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "BAAL AFTER DARK",
   "notes": {
-    "source_policy": "Le categorie canoniche derivano dalla BAAL Editorial Bible. Le estensioni sono proposte di catalogazione editoriale e richiedono revisione prima dell'uso operativo.",
+    "source_policy": "Le categorie canoniche derivano dalla BAAL Editorial Bible. Le estensioni sono proposte di catalogazione editoriale e richiedono revisione prima dell'uso operativo. Le nuove voci della versione 1.1 sono espansioni editoriali proposte e non diventano canoniche senza approvazione.",
     "safety": "La presenza di una categoria nel catalogo non autorizza la pubblicazione. Verificare sempre maggiore età, consenso, provenienza, diritti e regole della piattaforma.",
     "status_values": [
       "canonical",
       "editorial_expansion",
       "needs_review"
+    ],
+    "version": "1.1-proposal",
+    "updated_at": "2026-11-24",
+    "change_log": [
+      {
+        "change_id": "TAX-1.1-01",
+        "decision": "Anal & Rear-Focused added as a dedicated EXTREME FETISH subcategory.",
+        "status": "editorial_expansion",
+        "basis": "BAAL taxonomy gap analysis; source directory references S1 and S2."
+      },
+      {
+        "change_id": "TAX-1.1-02",
+        "decision": "BDSM, Power & Restraint consolidated into one EXTREME FETISH subcategory.",
+        "status": "editorial_expansion",
+        "basis": "User-approved taxonomy decision; preserves existing restraint and power-dynamics genres."
+      },
+      {
+        "change_id": "TAX-1.1-03",
+        "decision": "Animated & Fictional Media added under VIP SHOOT.",
+        "status": "editorial_expansion",
+        "basis": "User-approved taxonomy decision; keeps fictional subjects separate from real people."
+      },
+      {
+        "change_id": "TAX-1.1-04",
+        "decision": "Oral & Related Practices not added as a standalone subcategory.",
+        "status": "deferred",
+        "basis": "User explicitly declined a dedicated subcategory; no new oral taxonomy branch introduced in this version."
+      }
     ]
   },
   "pillars": [
@@ -218,6 +246,25 @@
           ]
         },
         {
+          "id": "animated-fictional-media",
+          "name": "Animated & Fictional Media",
+          "status": "editorial_expansion",
+          "genres": [
+            "animated-film",
+            "animated-series",
+            "anime",
+            "fictional-character-spotlight",
+            "video-game-character",
+            "comic-character",
+            "animation-character",
+            "fictional-universe"
+          ],
+          "source_refs": [
+            "S2"
+          ],
+          "editorial_note": "Sezione VIP SHOOT per personaggi e opere di fantasia. Non usare questa categoria per identificare persone reali; verificare separatamente età apparente, contesto e policy della piattaforma."
+        },
+        {
           "id": "interview-public",
           "name": "Interview & Public Appearance",
           "genres": [
@@ -254,6 +301,24 @@
           ]
         },
         {
+          "id": "anal-rear-focused",
+          "name": "Anal & Rear-Focused",
+          "status": "editorial_expansion",
+          "genres": [
+            "anal-focus",
+            "rear-focused",
+            "ass-focus",
+            "rimming",
+            "anilingus",
+            "gaping"
+          ],
+          "source_refs": [
+            "S1",
+            "S2"
+          ],
+          "editorial_note": "Nuova area dedicata ai contenuti adulti con focus anale e posteriore. I generi sono termini di classificazione, non hashtag automaticamente approvati."
+        },
+        {
           "id": "clothing-materials",
           "name": "Clothing & Materials",
           "genres": [
@@ -270,26 +335,32 @@
         },
         {
           "id": "restraint",
-          "name": "Restraint & Accessories",
+          "name": "BDSM, Power & Restraint",
           "genres": [
             "bondage",
             "rope-restraint",
             "cuffs",
             "chastity",
-            "consensual-restriction"
-          ]
-        },
-        {
-          "id": "power-dynamics",
-          "name": "Power Dynamics",
-          "genres": [
+            "consensual-restriction",
             "femdom",
             "dominance",
             "submission",
             "role-reversal",
             "consensual-humiliation",
-            "service-dynamic"
-          ]
+            "service-dynamic",
+            "discipline",
+            "spanking",
+            "kinbaku",
+            "collars",
+            "gags",
+            "power-exchange"
+          ],
+          "status": "editorial_expansion",
+          "source_refs": [
+            "S1",
+            "S2"
+          ],
+          "editorial_note": "Ramo unificato secondo la decisione editoriale BAAL. Include dinamiche di potere, pratiche consensuali e strumenti di restraint. S3 non è ancora stata acquisita."
         },
         {
           "id": "body-fetish",
@@ -361,6 +432,10 @@
             "hypnotic-edit"
           ]
         }
+      ],
+      "editorial_notes": [
+        "Oral & Related Practices non è una sottocategoria autonoma nella v1.1, in conformità alla decisione editoriale.",
+        "La collocazione futura di eventuali termini orali resta da decidere; non vengono forzati dentro categorie semanticamente non pertinenti."
       ]
     },
     {
