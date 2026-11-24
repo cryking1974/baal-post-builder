@@ -353,6 +353,15 @@
             "animation-character",
             "fictional-universe"
           ]
+        },
+        {
+          "pillar_id": "porno-explicit",
+          "subcategory_id": "compilation",
+          "genre_ids": [
+            "themed-compilation",
+            "performer-compilation",
+            "genre-compilation"
+          ]
         }
       ]
     },
