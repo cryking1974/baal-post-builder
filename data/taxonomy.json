@@ -9,7 +9,7 @@
       "editorial_expansion",
       "needs_review"
     ],
-    "version": "1.1-proposal",
+    "version": "1.1-approved-for-testing",
     "updated_at": "2026-11-24",
     "change_log": [
       {
@@ -35,6 +35,12 @@
         "decision": "Oral & Related Practices not added as a standalone subcategory.",
         "status": "deferred",
         "basis": "User explicitly declined a dedicated subcategory; no new oral taxonomy branch introduced in this version."
+      },
+      {
+        "change_id": "TAX-1.1-05",
+        "decision": "User approved the v1.1 taxonomy proposal for operational testing.",
+        "status": "editorial_expansion",
+        "basis": "Explicit user approval in project conversation."
       }
     ]
   },
@@ -732,5 +738,6 @@
       "id": "needs-review",
       "label": "Da verificare"
     }
-  ]
+  ],
+  "project_version": "BAAL Post Builder 3.1.0"
 }

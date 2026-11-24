@@ -1,14 +1,16 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "source": "BAAL AFTER DARK – Subject Prelist",
-  "purpose": "Archivio facoltativo di protagoniste, performer, creator, VIP, modelle e personaggi utilizzabili nel Post Builder.",
+  "purpose": "Archivio facoltativo di protagoniste, performer, creator, VIP, modelle e personaggi utilizzabili nel Post Builder; categorie allineate alla tassonomia BAAL v1.1.",
   "rules": [
     "L'archivio può restare vuoto: non inserire automaticamente persone reali.",
     "Aggiungere una persona solo quando nome, categoria e contesto sono stati verificati.",
     "Per persone reali, verificare che siano adulte prima di associare contenuti adult.",
     "Non associare a una persona generi, contenuti o hashtag non documentati.",
     "Gli hashtag associati sono suggerimenti contestuali, non tag obbligatori.",
-    "Registrare la fonte della verifica e aggiornare i record quando le informazioni cambiano."
+    "Registrare la fonte della verifica e aggiornare i record quando le informazioni cambiano.",
+    "La categoria fictional-character è destinata esclusivamente alla sottocategoria Animated & Fictional Media e ad altri contesti di fantasia pertinenti; non usarla per persone reali.",
+    "Le categorie adult-performer e adult-creator richiedono verifica documentata della maggiore età prima di qualsiasi associazione a contenuti adult."
   ],
   "categories": [
     {
@@ -77,5 +79,58 @@
     "verification_status",
     "notes"
   ],
-  "subjects": []
+  "subjects": [],
+  "category_rules": {
+    "adult-performer": {
+      "allowed_pillars": [
+        "porno-explicit",
+        "extreme-fetish",
+        "devils-poll"
+      ],
+      "adult_required": true
+    },
+    "adult-creator": {
+      "allowed_pillars": [
+        "porno-explicit",
+        "extreme-fetish",
+        "devils-poll"
+      ],
+      "adult_required": true
+    },
+    "model": {
+      "allowed_pillars": [
+        "vip-shoot",
+        "devils-poll"
+      ],
+      "adult_required": false
+    },
+    "celebrity": {
+      "allowed_pillars": [
+        "vip-shoot",
+        "devils-poll"
+      ],
+      "adult_required": false
+    },
+    "influencer": {
+      "allowed_pillars": [
+        "vip-shoot",
+        "devils-poll"
+      ],
+      "adult_required": false
+    },
+    "cosplay-creator": {
+      "allowed_pillars": [
+        "vip-shoot",
+        "devils-poll"
+      ],
+      "adult_required": false
+    },
+    "fictional-character": {
+      "allowed_pillars": [
+        "vip-shoot",
+        "devils-poll"
+      ],
+      "adult_required": false
+    }
+  }
 }

@@ -1,12 +1,13 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "source": "BAAL AFTER DARK – Dizionario Slang X v1.0",
-  "source_policy": "I pacchetti e le definizioni seguenti sono estratti dal Dizionario BAAL. Non rappresentano misure di popolarità o garanzie di copertura.",
+  "source_policy": "I pacchetti e le definizioni seguenti sono estratti dal Dizionario BAAL. Non rappresentano misure di popolarità o garanzie di copertura. Le associazioni ai percorsi tassonomici sono editoriali BAAL; i tag in stato candidate_unverified non sono attestazioni di popolarità.",
   "status_definitions": {
     "base_from_dictionary": "Presente nel pacchetto base del Dizionario BAAL; non equivale a popolarità verificata.",
     "optional_from_dictionary": "Aggiunta opzionale indicata dal Dizionario BAAL.",
     "test_from_dictionary": "Variante indicata dal Dizionario BAAL come da testare.",
-    "avoid": "Termine che il Dizionario BAAL raccomanda di evitare."
+    "avoid": "Termine che il Dizionario BAAL raccomanda di evitare.",
+    "candidate_unverified": "Termine candidato aggiunto per copertura tassonomica; significato/uso su X da verificare, nessuna affermazione di popolarità."
   },
   "packages": [
     {
@@ -24,7 +25,17 @@
         "#Gooning",
         "#AdultCreator"
       ],
-      "notes": "Scegliere 3-5 hashtag pertinenti, non tutti insieme."
+      "notes": "Scegliere 3-5 hashtag pertinenti, non tutti insieme.",
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "edging-gooning",
+          "genre_ids": [
+            "edging",
+            "gooning"
+          ]
+        }
+      ]
     },
     {
       "id": "performer",
@@ -37,10 +48,28 @@
         "#NSFW"
       ],
       "optional": [
-        "#[NomePerformer]",
         "#AfterDarkSpotlight"
       ],
-      "notes": "Usare il nome solo se la performer è realmente protagonista."
+      "notes": "Usare il nome solo se la performer è realmente protagonista.",
+      "associations": [
+        {
+          "pillar_id": "porno-explicit",
+          "subcategory_id": "performer-spotlight",
+          "genre_ids": [
+            "performer-profile",
+            "career-highlight",
+            "verified-performer"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "performer-battle",
+          "genre_ids": [
+            "performer-comparison",
+            "performer-bracket"
+          ]
+        }
+      ]
     },
     {
       "id": "adult-creator",
@@ -53,10 +82,20 @@
         "#NSFW"
       ],
       "optional": [
-        "#OnlyFans",
-        "#[NomeCreator]"
+        "#OnlyFans"
       ],
-      "notes": "#OnlyFans solo se pertinente."
+      "notes": "#OnlyFans solo se pertinente.",
+      "associations": [
+        {
+          "pillar_id": "porno-explicit",
+          "subcategory_id": "adult-creator",
+          "genre_ids": [
+            "independent-creator",
+            "subscription-creator",
+            "verified-amateur-creator"
+          ]
+        }
+      ]
     },
     {
       "id": "cosplay",
@@ -73,14 +112,33 @@
         "#FantasyCosplay",
         "#AdultCreator"
       ],
-      "notes": "Non usare tag sessuali su cosplay non sessuale."
+      "notes": "Non usare tag sessuali su cosplay non sessuale.",
+      "associations": [
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "cosplay",
+          "genre_ids": [
+            "character-cosplay",
+            "gaming-cosplay",
+            "anime-cosplay",
+            "fantasy-cosplay",
+            "sci-fi-cosplay"
+          ]
+        },
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "roleplay-fantasy",
+          "genre_ids": [
+            "cosplay-fantasy"
+          ]
+        }
+      ]
     },
     {
       "id": "foot-fetish",
       "name": "Foot Fetish",
       "use_when": "Contenuti che hanno davvero i piedi come soggetto principale.",
       "base": [
-        "#[NomePerformer]",
         "#FootFetish",
         "#Feet",
         "#NSFW",
@@ -90,7 +148,27 @@
         "#FeetFirst",
         "#Gooner"
       ],
-      "notes": "#Gooner solo se pertinente."
+      "notes": "#Gooner solo se pertinente.",
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "feet-footwear",
+          "genre_ids": [
+            "foot-fetish",
+            "feet-worship",
+            "barefoot",
+            "dirty-feet",
+            "heels",
+            "boots",
+            "sandals",
+            "flip-flops",
+            "socks",
+            "stockings",
+            "pedicure",
+            "shoe-focus"
+          ]
+        }
+      ]
     },
     {
       "id": "femdom-bdsm",
@@ -106,6 +184,27 @@
         "#Dominance",
         "#Submission",
         "#Kink"
+      ],
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "restraint",
+          "genre_ids": [
+            "femdom",
+            "dominance",
+            "submission",
+            "bondage",
+            "power-exchange",
+            "discipline",
+            "spanking",
+            "kinbaku",
+            "chastity",
+            "rope-restraint",
+            "cuffs",
+            "collars",
+            "gags"
+          ]
+        }
       ]
     },
     {
@@ -113,7 +212,6 @@
       "name": "Glamour / Thirst Trap",
       "use_when": "Foto glamour, moda, pose seducenti e contenuti ammiccanti non espliciti.",
       "base": [
-        "#[NomePerformer]",
         "#Glamour",
         "#ThirstTrap",
         "#Model",
@@ -123,6 +221,29 @@
         "#Baddie",
         "#AltGirl",
         "#Cosplay"
+      ],
+      "associations": [
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "fashion-editorial",
+          "genre_ids": [
+            "fashion-campaign",
+            "designer-look",
+            "runway",
+            "street-style",
+            "beauty-editorial"
+          ]
+        },
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "photoshoot",
+          "genre_ids": [
+            "editorial-shoot",
+            "portrait",
+            "magazine-cover",
+            "campaign-shoot"
+          ]
+        }
       ]
     },
     {
@@ -135,8 +256,50 @@
         "#Entertainment"
       ],
       "optional": [
-        "#[NomeCelebrità]",
         "#BAALsVerdict"
+      ],
+      "associations": [
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "celebrity-spotlight",
+          "genre_ids": [
+            "actor",
+            "actress",
+            "singer",
+            "presenter",
+            "athlete",
+            "public-figure"
+          ]
+        },
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "movie-tv",
+          "genre_ids": [
+            "movie-scene",
+            "tv-series-scene",
+            "character-spotlight",
+            "film-promotion",
+            "series-promotion"
+          ]
+        },
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "red-carpet",
+          "genre_ids": [
+            "premiere",
+            "award-show",
+            "festival",
+            "public-appearance"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "celebrity-battle",
+          "genre_ids": [
+            "celebrity-comparison",
+            "character-comparison"
+          ]
+        }
       ]
     },
     {
@@ -150,11 +313,46 @@
         "#AdultEntertainment"
       ],
       "optional": [
-        "#[NomePerformer]",
         "#CosplayEdit",
         "#NSFW"
       ],
-      "notes": "#NSFW solo se appropriato. Un edit non elimina copyright, diritti d'immagine o necessità di autorizzazione alla redistribuzione."
+      "notes": "#NSFW solo se appropriato. Un edit non elimina copyright, diritti d'immagine o necessità di autorizzazione alla redistribuzione.",
+      "associations": [
+        {
+          "pillar_id": "porno-explicit",
+          "subcategory_id": "scene-and-clips",
+          "genre_ids": [
+            "scene-spotlight",
+            "short-clip",
+            "long-scene",
+            "point-of-view-format"
+          ]
+        },
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "pop-culture",
+          "genre_ids": [
+            "viral-moment",
+            "throwback",
+            "cultural-reference",
+            "trend-reaction"
+          ]
+        },
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "animated-fictional-media",
+          "genre_ids": [
+            "animated-film",
+            "animated-series",
+            "anime",
+            "fictional-character-spotlight",
+            "video-game-character",
+            "comic-character",
+            "animation-character",
+            "fictional-universe"
+          ]
+        }
+      ]
     },
     {
       "id": "poll",
@@ -166,10 +364,113 @@
         "#AdultEntertainment"
       ],
       "optional": [
-        "#[NomiRilevanti]",
         "#Gooner"
       ],
-      "notes": "#Gooner solo se pertinente."
+      "notes": "#Gooner solo se pertinente.",
+      "associations": [
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "performer-battle",
+          "genre_ids": [
+            "performer-comparison",
+            "performer-bracket"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "creator-battle",
+          "genre_ids": [
+            "creator-comparison",
+            "creator-bracket"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "celebrity-battle",
+          "genre_ids": [
+            "celebrity-comparison",
+            "character-comparison"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "fetish-poll",
+          "genre_ids": [
+            "genre-choice",
+            "niche-choice",
+            "community-preference"
+          ]
+        },
+        {
+          "pillar_id": "devils-poll",
+          "subcategory_id": "community-choice",
+          "genre_ids": [
+            "next-spotlight",
+            "next-baal-edit",
+            "content-request-vote"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anal-rear-focused",
+      "name": "Anal & Rear-Focused",
+      "use_when": "Solo per contenuti in cui il focus anal/rear è effettivamente centrale. I termini non certificano popolarità su X.",
+      "base": [],
+      "optional": [],
+      "test": [
+        "#Anal",
+        "#AnalFetish",
+        "#RearFocused",
+        "#AssFocus"
+      ],
+      "status_override": "candidate_unverified",
+      "associations": [
+        {
+          "pillar_id": "extreme-fetish",
+          "subcategory_id": "anal-rear-focused",
+          "genre_ids": [
+            "anal-focus",
+            "rear-focused",
+            "ass-focus",
+            "rimming",
+            "anilingus",
+            "gaping"
+          ]
+        }
+      ],
+      "notes": "Tag candidati da verificare su X prima dell’uso. Non sono presentati come popolari o verificati."
+    },
+    {
+      "id": "fictional-media",
+      "name": "Animated & Fictional Media",
+      "use_when": "Personaggi e opere animate o di fantasia nel contesto VIP SHOOT.",
+      "base": [
+        "#PopCulture"
+      ],
+      "optional": [
+        "#Anime",
+        "#Animation",
+        "#VideoGame"
+      ],
+      "test": [],
+      "associations": [
+        {
+          "pillar_id": "vip-shoot",
+          "subcategory_id": "animated-fictional-media",
+          "genre_ids": [
+            "animated-film",
+            "animated-series",
+            "anime",
+            "fictional-character-spotlight",
+            "video-game-character",
+            "comic-character",
+            "animation-character",
+            "fictional-universe"
+          ]
+        }
+      ],
+      "notes": "Hashtag generici da usare soltanto quando pertinenti; verificare separatamente il contesto e l’età dei personaggi."
     }
   ],
   "slang_terms": [
