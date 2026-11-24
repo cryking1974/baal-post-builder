@@ -322,7 +322,6 @@ function makeBrief() {
     `Hashtag tematici selezionati manualmente dall’autore: ${manualHashtags.length ? manualHashtags.join(" ") : "Nessuno"}`,
     `Hashtag dei protagonisti aggiunti automaticamente: ${subjectHashtags.length ? subjectHashtags.join(" ") : "Nessuno"}`,
     `Hashtag complessivi da usare nel copy: ${selectedHashtags.join(" ")}`,
-    `Hashtag dei protagonisti ricavati automaticamente dai nomi inseriti: ${subjectHashtags.length ? subjectHashtags.join(" ") : "Nessuno"}`,
     "Includi i tag dei protagonisti soltanto se i nomi inseriti identificano davvero le persone protagoniste del media. Non inventare altri hashtag: i tag tematici sono scelti manualmente dall'autore. Se un tag selezionato appare incongruente, segnalalo nelle note invece di sostituirlo autonomamente."
   );
 
