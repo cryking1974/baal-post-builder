@@ -1,47 +1,46 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111111">
-  <title>BAAL AFTER DARK – Post Builder</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111"><title>BAAL AFTER DARK – Post Builder</title>
+  <link rel="stylesheet" href="css/style.css"><script src="js/app.js" defer></script>
 </head>
 <body>
-  <main class="shell">
-    <header>
-      <div class="mark">BAAL</div>
-      <p class="eyebrow">AFTER DARK</p>
-      <h1>Post Builder</h1>
-      <p class="intro">La cabina editoriale per i post BAAL.</p>
-    </header>
-    <section class="panel">
-      <label for="description">Descrivi il contenuto</label>
-      <textarea id="description" rows="4" placeholder="Descrivi in italiano il contenuto, il contesto e il punto che vuoi comunicare..."></textarea>
-      <div class="grid">
-        <div><label for="pillar">Pilastro</label><select id="pillar"><option value="">Caricamento...</option></select></div>
-        <div><label for="subcategory">Sottocategoria</label><select id="subcategory" disabled><option value="">Prima scegli il pilastro</option></select></div>
-      </div>
-      <div class="grid">
-        <div><label for="genre">Genere / sottogenere</label><select id="genre" disabled><option value="">Prima scegli la sottocategoria</option></select></div>
-        <div><label for="format">Formato</label><select id="format"><option value="">Seleziona formato</option></select></div>
-      </div>
-      <div class="grid">
-        <div><label for="subjectCategory">Categoria protagonista (facoltativa)</label><select id="subjectCategory"><option value="">Nessuna selezione</option></select></div>
-        <div><label for="subject">Protagonista (facoltativa)</label><input id="subject" list="subjectOptions" placeholder="Scrivi o seleziona un nome"><datalist id="subjectOptions"></datalist></div>
-      </div>
-      <label for="hashtags">Hashtag selezionati / personalizzati</label>
-      <input id="hashtags" type="text" placeholder="#tag1 #tag2">
-      <div id="suggestions" class="suggestions" aria-live="polite"></div>
-      <div class="actions">
-        <button id="prepare">Prepara scheda</button>
-        <button id="copy" class="secondary" disabled>Copia scheda</button>
-      </div>
-      <pre id="output" class="output" hidden></pre>
-      <p id="status" role="status">Caricamento degli archivi BAAL...</p>
-    </section>
-    <footer>BAAL AFTER DARK · Post Builder · versione archivio 2</footer>
-  </main>
-  <script src="js/app.js"></script>
-</body>
-</html>
+<main class="shell">
+  <header><div class="mark">BAAL</div><p class="eyebrow">AFTER DARK</p><h1>Post Builder</h1><p class="intro">La cabina editoriale per i post BAAL.</p></header>
+  <section class="panel">
+    <div class="section-head"><h2>01 · Contenuto</h2><button id="clear" class="danger small" type="button">Pulisci</button></div>
+    <label for="mode">Modalità</label><select id="mode"><option value="single">Contenuto singolo</option><option value="multi">Contenuto con più protagonisti</option></select>
+    <label for="description">Descrizione del media</label><textarea id="description" rows="4" placeholder="Descrivi ciò che si vede: soggetti, azioni, dettagli visivi e atmosfera. Non inserire supposizioni."></textarea>
+    <div class="grid"><div><label for="pillar">Pilastro</label><select id="pillar"><option value="">Caricamento...</option></select></div><div><label for="subcategory">Sottocategoria</label><select id="subcategory" disabled><option value="">Prima scegli il pilastro</option></select></div></div>
+    <div class="grid"><div><label for="genre">Genere</label><select id="genre" disabled><option value="">Prima scegli la sottocategoria</option></select></div><div><label for="format">Formato</label><select id="format"><option value="">Seleziona formato</option></select></div></div>
+  </section>
+  <section class="panel">
+    <h2>02 · Protagonisti</h2>
+    <div id="subjects"></div><button id="addSubject" class="secondary small" type="button">+ Aggiungi protagonista</button>
+    <p class="hint">L'archivio è facoltativo. Puoi scrivere un nome non presente senza registrarlo automaticamente.</p>
+  </section>
+  <section class="panel">
+    <h2>03 · Contesto e angolazione</h2>
+    <div class="grid"><div><label for="contextType">Contesto</label><select id="contextType"><option value="">Nessuno</option><option>Film / Serie TV</option><option>Evento</option><option>Collaborazione</option><option>Trend</option><option>Shooting / Progetto</option><option>Altro</option></select></div><div><label for="contextDetail">Dettaglio contesto</label><input id="contextDetail" placeholder="Titolo, evento, progetto…"></div></div>
+    <label for="angle">Angolazione editoriale</label><textarea id="angle" rows="2" placeholder="Qual è il punto di vista, l'osservazione o la conversazione che vuoi stimolare?"></textarea>
+    <label for="objective">Obiettivo del post (facoltativo)</label><select id="objective"><option value="">Non specificato</option><option>Engagement</option><option>Conversazione</option><option>Community</option><option>Discovery</option><option>Brand awareness</option><option>Spotlight protagonista</option><option>Intrattenimento</option><option>Spontaneo</option></select>
+  </section>
+  <section class="panel">
+    <h2>04 · Sondaggio</h2><p class="hint">Compila questa sezione soltanto se il formato scelto è Poll.</p>
+    <label for="pollQuestion">Domanda</label><input id="pollQuestion" maxlength="280" placeholder="Domanda del sondaggio">
+    <div id="pollOptions"></div><button id="addPollOption" class="secondary small" type="button">+ Aggiungi opzione</button>
+    <div class="grid"><div><label for="pollDuration">Durata</label><select id="pollDuration"><option value="">Non specificata</option><option>1 giorno</option><option>2 giorni</option><option>3 giorni</option><option>7 giorni</option></select></div><div><label for="pollNote">Nota sul sondaggio</label><input id="pollNote" placeholder="Criterio, tema o istruzioni"></div></div>
+  </section>
+  <section class="panel">
+    <h2>05 · Hashtag</h2>
+    <div class="grid"><div><label for="tagSearch">Cerca per parola o pacchetto</label><input id="tagSearch" placeholder="Es. feet, performer, celebrity"></div><div><label for="tagStatus">Classificazione</label><select id="tagStatus"><option value="all">Tutti</option><option value="base">Base dizionario</option><option value="optional">Opzionali</option><option value="test">Da testare</option></select></div></div>
+    <div id="suggestions" class="suggestions" aria-live="polite"></div>
+    <label for="hashtags">Hashtag selezionati / personalizzati</label><input id="hashtags" placeholder="#BaalAfterDark #tag">
+    <p class="hint">#BaalAfterDark è preselezionato. #NSFW viene suggerito solo quando pertinente. I suggerimenti non attestano popolarità o reach.</p>
+    <div class="actions"><button id="prepare" type="button">Prepara scheda</button><button id="copy" class="secondary" type="button" disabled>Copia scheda</button><button id="exportTags" class="secondary" type="button">Esporta archivio hashtag</button></div>
+    <pre id="output" class="output" hidden></pre><p id="status" role="status">Caricamento degli archivi BAAL…</p>
+  </section>
+  <footer>BAAL AFTER DARK · Post Builder · versione 3</footer>
+</main>
+</body></html>
